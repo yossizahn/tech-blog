@@ -3,10 +3,10 @@
   "title": "yosssizahn&#39;s tech blog",
   "home_page_url": "https://yossizahn.github.io/",
   "feed_url": "https://yossizahn.github.io/",
-  "description": "Some interesting tech stuff I have come across.",
+  "description": "Interesting tech stuff I encounter.",
   "author": {
     "name": "yossizahn",
-    "url": "https://yossizahn.github.io/about/"
+    "url": "https://yossizahn.github.io/tech-blog/about/"
   },
   "items": [{
       "id": "https://yossizahn.github.io/tech-blog/posts/hello-world/",

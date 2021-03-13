@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<title>yosssizahn&#39;s tech blog</title>
-	<subtitle>Some interesting tech stuff I have come across.</subtitle>
+	<subtitle>Interesting tech stuff I encounter.</subtitle>
 	
 	<link href="https://yossizahn.github.io/tech-blog/feed/feed.xml" rel="self"/>
 	<link href="https://yossizahn.github.io/"/>
