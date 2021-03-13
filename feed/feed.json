@@ -13,7 +13,13 @@
       "url": "https://yossizahn.github.io/tech-blog/posts/hello-world/",
       "title": "Hi 👋",
       "content_html": "<p>An empty post...<br>\nOne day I may write something...</p>\n",
-      "date_published": "2018-08-24T00:00:00Z"
+      "date_published": "2021-03-13T00:00:00Z"
+    },{
+      "id": "https://yossizahn.github.io/tech-blog/posts/favourite-tools/",
+      "url": "https://yossizahn.github.io/tech-blog/posts/favourite-tools/",
+      "title": "My favourite tools",
+      "content_html": "<p>I will try to keep an updated list of my favourite tools here.</p>\n<p>Let's start!</p>\n<h1 id=\"pdf\">PDF <a class=\"direct-link\" href=\"#pdf\">#</a></h1>\n<ul>\n<li>PDFXchange Editor from Tracker Software is hands-down my favourite PDF Editor.<br>\nI like it because:\n<ul>\n<li>It is pretty, light-weight, featurefull and very easy to use.</li>\n<li>It is actively maintained &amp; developed.</li>\n<li>Tracker's customer support is something I have not seen anywhere else. Amazing.</li>\n<li>They have a buy-once licensing scheme instead of a subscription model.</li>\n</ul>\n</li>\n</ul>\n<p><em>to be continued...</em></p>\n",
+      "date_published": "2021-03-13T00:00:00Z"
     }
   ]
 }
