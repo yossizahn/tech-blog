@@ -1,0 +1,19 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "yosssizahn&#39;s tech blog",
+  "home_page_url": "https://yossizahn.github.io/",
+  "feed_url": "https://yossizahn.github.io/",
+  "description": "Some interesting tech stuff I have come across.",
+  "author": {
+    "name": "yossizahn",
+    "url": "https://yossizahn.github.io/about/"
+  },
+  "items": [{
+      "id": "https://yossizahn.github.io/posts/hello-world/",
+      "url": "https://yossizahn.github.io/posts/hello-world/",
+      "title": "Hi 👋",
+      "content_html": "<p>An empty post...<br>\nOne day I may write something...</p>\n",
+      "date_published": "2018-08-24T00:00:00Z"
+    }
+  ]
+}

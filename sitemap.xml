@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://yossizahn.github.io/posts/hello-world/</loc>
+    <lastmod>2018-08-24</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yossizahn.github.io/about/</loc>
+    <lastmod>2021-03-13</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yossizahn.github.io/posts/</loc>
+    <lastmod>2021-03-13</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yossizahn.github.io/</loc>
+    <lastmod>2021-03-13</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yossizahn.github.io/page-list/</loc>
+    <lastmod>2021-03-13</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yossizahn.github.io/tags/</loc>
+    <lastmod>2021-03-13</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yossizahn.github.io/tags/test/</loc>
+    <lastmod>2021-03-13</lastmod>
+  </url>
+</urlset>
