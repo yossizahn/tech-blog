@@ -1,9 +1,9 @@
 {
   "title": "yosssizahn's tech blog",
   "url": "https://yossizahn.github.io/",
-  "description": "Some interesting tech stuff I have come across.",
+  "description": "Interesting tech stuff I encounter.",
   "feed": {
-    "subtitle": "Some interesting tech stuff I have come across.",
+    "subtitle": "Interesting tech stuff I encounter.",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
     "id": "https://yossizahn.github.io/"
@@ -15,6 +15,6 @@
   "author": {
     "name": "yossizahn",
     "email": "dont@email.me",
-    "url": "https://yossizahn.github.io/about/"
+    "url": "https://yossizahn.github.io/tech-blog/about/"
   }
 }
