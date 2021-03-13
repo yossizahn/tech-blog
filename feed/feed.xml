@@ -3,7 +3,7 @@
 	<title>yosssizahn&#39;s tech blog</title>
 	<subtitle>Some interesting tech stuff I have come across.</subtitle>
 	
-	<link href="https://yossizahn.github.io/feed/feed.xml" rel="self"/>
+	<link href="https://yossizahn.github.io/tech-blog/feed/feed.xml" rel="self"/>
 	<link href="https://yossizahn.github.io/"/>
 	<updated>2018-08-24T00:00:00Z</updated>
 	<id>https://yossizahn.github.io/</id>
@@ -14,9 +14,9 @@
 	
 	<entry>
 		<title>Hi 👋</title>
-		<link href="https://yossizahn.github.io/posts/hello-world/"/>
+		<link href="https://yossizahn.github.io/tech-blog/posts/hello-world/"/>
 		<updated>2018-08-24T00:00:00Z</updated>
-		<id>https://yossizahn.github.io/posts/hello-world/</id>
+		<id>https://yossizahn.github.io/tech-blog/posts/hello-world/</id>
 		<content type="html">&lt;p&gt;An empty post...&lt;br /&gt;
 One day I may write something...&lt;/p&gt;
 </content>

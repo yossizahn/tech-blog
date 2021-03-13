@@ -9,8 +9,8 @@
     "url": "https://yossizahn.github.io/about/"
   },
   "items": [{
-      "id": "https://yossizahn.github.io/posts/hello-world/",
-      "url": "https://yossizahn.github.io/posts/hello-world/",
+      "id": "https://yossizahn.github.io/tech-blog/posts/hello-world/",
+      "url": "https://yossizahn.github.io/tech-blog/posts/hello-world/",
       "title": "Hi 👋",
       "content_html": "<p>An empty post...<br>\nOne day I may write something...</p>\n",
       "date_published": "2018-08-24T00:00:00Z"
