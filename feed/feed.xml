@@ -27,20 +27,43 @@ One day I may write something...&lt;/p&gt;
 		<link href="https://yossizahn.github.io/tech-blog/posts/favourite-tools/"/>
 		<updated>2021-03-13T00:00:00Z</updated>
 		<id>https://yossizahn.github.io/tech-blog/posts/favourite-tools/</id>
-		<content type="html">&lt;p&gt;I will try to keep an updated list of my favorite tools here.&lt;/p&gt;
-&lt;p&gt;Let&#39;s start!&lt;/p&gt;
-&lt;h1 id=&quot;pdf&quot;&gt;PDF &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#pdf&quot;&gt;#&lt;/a&gt;&lt;/h1&gt;
+		<content type="html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#introduction&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I will try to keep an updated list of my favorite tools here.&lt;/p&gt;
+&lt;p&gt;It will be split as follows:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.tracker-software.com/product/pdf-xchange-editor&quot;&gt;PDF-Xchange Editor&lt;/a&gt; from &lt;a href=&quot;https://www.tracker-software.com/&quot;&gt;Tracker Software&lt;/a&gt; is hands-down my favorite PDF Editor.&lt;br /&gt;
-I like it because:
+&lt;li&gt;Tools that I want to give a massive shout-out for. These are tools that I think are amazing and more people should know about them and use them. I will add to each item a short description and some reasons why I like them so much.&lt;/li&gt;
+&lt;li&gt;This will be followed by a list of tools I use, grouped by category. These tools are chosen by me as the best in category for the job I use them for. However they are either already very well-known, or just not good enough to deserve a massive shout out.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Let&#39;s start!&lt;/p&gt;
+&lt;h2 id=&quot;big-shout-out-for-these-tools-%F0%9F%93%A2&quot;&gt;Big shout out for these tools 📢 &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#big-shout-out-for-these-tools-%F0%9F%93%A2&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;These are tools that I think are amazing and more people should know about them and use them. The tools are listed in no particular order.&lt;/p&gt;
+&lt;h3 id=&quot;pdf-xchange-editor-(freemium)&quot;&gt;&lt;a href=&quot;https://www.tracker-software.com/product/pdf-xchange-editor&quot;&gt;PDF-Xchange Editor&lt;/a&gt; (Freemium) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#pdf-xchange-editor-(freemium)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.tracker-software.com/product/pdf-xchange-editor&quot;&gt;PDF-Xchange Editor&lt;/a&gt; from &lt;a href=&quot;https://www.tracker-software.com/&quot;&gt;Tracker Software&lt;/a&gt; is hands-down my favorite PDF Editor.&lt;/p&gt;
+&lt;p&gt;I like it because:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;It is pretty, light-weight, featureful and very easy to use.&lt;/li&gt;
 &lt;li&gt;It is actively maintained &amp;amp; developed.&lt;/li&gt;
-&lt;li&gt;Tracker&#39;s customer support is something I have not seen anywhere else. Amazing.&lt;/li&gt;
+&lt;li&gt;Tracker&#39;s customer support is something I have not seen anywhere else. The support personal are  knowledgeable, friendly and very responsive. No question in the &lt;a href=&quot;https://forum.tracker-software.com/viewforum.php?f=50&quot;&gt;support forum&lt;/a&gt; is left unanswered, no email is ignored. Just overall amazing.&lt;/li&gt;
 &lt;li&gt;They have a buy-once licensing scheme instead of a subscription model.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
+&lt;h3 id=&quot;everything-(free%2C-proprietary)&quot;&gt;&lt;a href=&quot;https://www.voidtools.com/&quot;&gt;Everything&lt;/a&gt; (Free, Proprietary) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#everything-(free%2C-proprietary)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.voidtools.com/&quot;&gt;Everything&lt;/a&gt; is an amazing file search tool from &lt;a href=&quot;https://www.voidtools.com/&quot;&gt;voidtools&lt;/a&gt;. Now, I would have thought (and still do think so...) that Everything is a terrible name for a tool (&amp;quot;Hey, have you heard of everything?&amp;quot;, &amp;quot;Heard of what??? 😕&amp;quot;). But apparently it is good enough to come out first in a &lt;a href=&quot;https://www.google.com/search?q=Everything&quot;&gt;Google search&lt;/a&gt; for the word &amp;quot;everything&amp;quot;.&lt;/p&gt;
+&lt;p&gt;My favorite use for it, is something it wasn&#39;t designed for. I&lt;/p&gt;
+&lt;p&gt;I like it because:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It is very light-weight, extremely fast and very featureful.&lt;/li&gt;
+&lt;li&gt;It is actively maintained and seems to be of very high quality code.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&quot;process-hacker-(open-source)&quot;&gt;&lt;a href=&quot;https://processhacker.sourceforge.io/nightly.php&quot;&gt;Process Hacker&lt;/a&gt; (Open source) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#process-hacker-(open-source)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;ranger-(open-source)&quot;&gt;&lt;a href=&quot;https://ranger.github.io/&quot;&gt;Ranger&lt;/a&gt; (Open source) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#ranger-(open-source)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;fork-(proprietary)&quot;&gt;&lt;a href=&quot;https://fork.dev/&quot;&gt;Fork&lt;/a&gt; (Proprietary) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#fork-(proprietary)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;windows-terminal-(open-source)&quot;&gt;Windows Terminal (Open source) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#windows-terminal-(open-source)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&quot;mini-shout-out-for-these%3A&quot;&gt;Mini shout out for these: &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#mini-shout-out-for-these%3A&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;7-zip&quot;&gt;7-zip &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#7-zip&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;clink&quot;&gt;Clink &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#clink&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;tableplus&quot;&gt;TablePlus &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#tableplus&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;paint.net&quot;&gt;&lt;a href=&quot;http://paint.net/&quot;&gt;Paint.net&lt;/a&gt; &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#paint.net&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&quot;the-full-unabridged-list-of-stuff-i-use&quot;&gt;The full unabridged list of stuff I use &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#the-full-unabridged-list-of-stuff-i-use&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;to be continued...&lt;/em&gt;&lt;/p&gt;
 </content>
 	</entry>
