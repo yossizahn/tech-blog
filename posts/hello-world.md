@@ -1,7 +1,7 @@
 ---
 title: Hi 👋
 description: This is a post on My Blog about win-win survival strategies.
-date: 2021-03-13
+date: 2021-03-11
 tags:
   - test
 layout: layouts/post.njk
