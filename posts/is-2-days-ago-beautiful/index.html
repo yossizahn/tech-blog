@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is `2.days.ago` a beautiful way of expressing a relative date?</title>
+    <meta name="description" content="Is `2.days.ago` a beautiful way of expressing a date?">
+    <link rel="stylesheet" href="/tech-blog/css/index.css">
+    <link rel="stylesheet" href="/tech-blog/css/prism-base16-monokai.dark.css">
+    <link rel="alternate" href="/tech-blog/feed/feed.xml" type="application/atom+xml" title="yosssizahn&#39;s tech blog">
+    <link rel="alternate" href="/tech-blog/feed/feed.json" type="application/json" title="yosssizahn&#39;s tech blog">
+  </head>
+  <body>
+    <header>
+      <h1 class="home"><a href="/tech-blog/">yosssizahn&#39;s tech blog</a></h1>
+      <ul class="nav">
+        <li class="nav-item"><a href="/tech-blog/">Home</a></li>
+        <li class="nav-item"><a href="/tech-blog/posts/">Archive</a></li>
+        <li class="nav-item"><a href="/tech-blog/about/">About Me</a></li>
+      </ul>
+    </header>
+
+    <main class="tmpl-post">
+      <h1>Is `2.days.ago` a beautiful way of expressing a relative date?</h1>
+
+<p>A common scenario: You need to calculate a date as a value relative to the current date.</p>
+<p>Using the popular (albeit <a href="https://momentjs.com/docs/#/-project-status/">somewhat deprecated</a>) <a href="https://momentjs.com/">moment.js</a>, this can be expressed as follows:</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> twoDaysAgo <span class="token operator">=</span> <span class="token function">moment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subtract</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'days'</span><span class="token punctuation">)</span></code></pre>
+<p>Nice. Readable. Sufficient.</p>
+<p>I came across this curious Ruby snippet recently:</p>
+<pre class="language-ruby"><code class="language-ruby">user <span class="token operator">=</span> <span class="token constant">User</span><span class="token punctuation">.</span>create<span class="token punctuation">(</span><br>  email<span class="token punctuation">:</span> <span class="token string">'user@example.com'</span><span class="token punctuation">,</span><br>  trial_ends_at<span class="token punctuation">:</span> <span class="token number">30.</span>days<span class="token punctuation">.</span>from_now<br><span class="token punctuation">)</span></code></pre>
+<p>Ruby on Rails users may find this code somewhat familiar. For me this came as a big surprise.</p>
+<p>After the initial double take, I tried understanding how this code actually works.<br>
+<em>There is no way that Ruby-core offers <code>days</code> as a method on integers. That would just be too ludicrous to imagine.</em></p>
+<p>Turns out, that Ruby allows (encourages?) extending native types, <em>and</em> this seems to be a popular practice. Whereas in JS land - where I live - it is generally frowned upon, in Ruby (on Rails?) it seems to be the norm to extend native types. There is even a utility library specifically for this purpose named <a href="https://guides.rubyonrails.org/active_support_core_extensions.html">Active Support</a>.</p>
+<p>So... the <code>days</code> extension-method of integers, returns a <code>Duration</code> object. And duration objects apparently have an <code>ago</code> method, which returns a <code>Date</code> which is offset <code>$duration</code> amount of time into the past. Exhilarating? Beautiful?</p>
+<p>Listen to what DHH (David Heinemeier Hansson, the creator of RoR) <a href="https://rubyonrails.org/doctrine/#optimize-for-programmer-happiness:~:text=But%20both%20decisions%20still%2C%20to%20this,Rails%20after%2012%20years%20of%20service.">has to say</a> about this style of coding:</p>
+<blockquote>
+<p>... both decisions still, to this day, make me smile. I relish getting to write <code>people.third</code> in a test case or the console. No, that’s not logical. It’s not efficient. It may even be pathological. But it continues to make me smile, thus fulfilling the principle and enriching my life, helping to justify my continued involvement with Rails after 12 years of service.</p>
+</blockquote>
+<p>Okay... <code>¯\_(ツ)_/¯</code></p>
+<p>In my opinion this style of coding is not only bad, it is also <em>less readable and in a certain sense uglier</em>. &quot;Why?&quot; you may ask. Well in my mind, code is not prose. Code was never intended to be prose. And code that masquerades as prose requires more mental energy to translate it back into the code that it really is.</p>
+<p>Disagree? You're welcome... Let me know in the comments. (Oops... no comments yet...)</p>
+
+
+<hr>
+<ul><li>Previous: <a href="/tech-blog/posts/hello-world/">Hi 👋</a></li>
+</ul>
+
+    </main>
+
+    <footer></footer>
+
+    <!-- Current page: /tech-blog/posts/is-2-days-ago-beautiful/ -->
+  </body>
+</html>

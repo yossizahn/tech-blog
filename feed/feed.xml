@@ -5,12 +5,38 @@
 	
 	<link href="https://yossizahn.github.io/tech-blog/feed/feed.xml" rel="self"/>
 	<link href="https://yossizahn.github.io/"/>
-	<updated>2021-03-13T00:00:00Z</updated>
+	<updated>2021-03-14T00:00:00Z</updated>
 	<id>https://yossizahn.github.io/</id>
 	<author>
 		<name>yossizahn</name>
 		<email>dont@email.me</email>
 	</author>
+	
+	<entry>
+		<title>Is `2.days.ago` a beautiful way of expressing a relative date?</title>
+		<link href="https://yossizahn.github.io/tech-blog/posts/is-2-days-ago-beautiful/"/>
+		<updated>2021-03-14T00:00:00Z</updated>
+		<id>https://yossizahn.github.io/tech-blog/posts/is-2-days-ago-beautiful/</id>
+		<content type="html">&lt;p&gt;A common scenario: You need to calculate a date as a value relative to the current date.&lt;/p&gt;
+&lt;p&gt;Using the popular (albeit &lt;a href=&quot;https://momentjs.com/docs/#/-project-status/&quot;&gt;somewhat deprecated&lt;/a&gt;) &lt;a href=&quot;https://momentjs.com/&quot;&gt;moment.js&lt;/a&gt;, this can be expressed as follows:&lt;/p&gt;
+&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; twoDaysAgo &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;subtract&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;days&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Nice. Readable. Sufficient.&lt;/p&gt;
+&lt;p&gt;I came across this curious Ruby snippet recently:&lt;/p&gt;
+&lt;pre class=&quot;language-ruby&quot;&gt;&lt;code class=&quot;language-ruby&quot;&gt;user &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;create&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;br /&gt;  email&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;user@example.com&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;br /&gt;  trial_ends_at&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;30.&lt;/span&gt;days&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;from_now&lt;br /&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ruby on Rails users may find this code somewhat familiar. For me this came as a big surprise.&lt;/p&gt;
+&lt;p&gt;After the initial double take, I tried understanding how this code actually works.&lt;br /&gt;
+&lt;em&gt;There is no way that Ruby-core offers &lt;code&gt;days&lt;/code&gt; as a method on integers. That would just be too ludicrous to imagine.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Turns out, that Ruby allows (encourages?) extending native types, &lt;em&gt;and&lt;/em&gt; this seems to be a popular practice. Whereas in JS land - where I live - it is generally frowned upon, in Ruby (on Rails?) it seems to be the norm to extend native types. There is even a utility library specifically for this purpose named &lt;a href=&quot;https://guides.rubyonrails.org/active_support_core_extensions.html&quot;&gt;Active Support&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So... the &lt;code&gt;days&lt;/code&gt; extension-method of integers, returns a &lt;code&gt;Duration&lt;/code&gt; object. And duration objects apparently have an &lt;code&gt;ago&lt;/code&gt; method, which returns a &lt;code&gt;Date&lt;/code&gt; which is offset &lt;code&gt;$duration&lt;/code&gt; amount of time into the past. Exhilarating? Beautiful?&lt;/p&gt;
+&lt;p&gt;Listen to what DHH (David Heinemeier Hansson, the creator of RoR) &lt;a href=&quot;https://rubyonrails.org/doctrine/#optimize-for-programmer-happiness:~:text=But%20both%20decisions%20still%2C%20to%20this,Rails%20after%2012%20years%20of%20service.&quot;&gt;has to say&lt;/a&gt; about this style of coding:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;... both decisions still, to this day, make me smile. I relish getting to write &lt;code&gt;people.third&lt;/code&gt; in a test case or the console. No, that’s not logical. It’s not efficient. It may even be pathological. But it continues to make me smile, thus fulfilling the principle and enriching my life, helping to justify my continued involvement with Rails after 12 years of service.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Okay... &lt;code&gt;¯\_(ツ)_/¯&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;In my opinion this style of coding is not only bad, it is also &lt;em&gt;less readable and in a certain sense uglier&lt;/em&gt;. &amp;quot;Why?&amp;quot; you may ask. Well in my mind, code is not prose. Code was never intended to be prose. And code that masquerades as prose requires more mental energy to translate it back into the code that it really is.&lt;/p&gt;
+&lt;p&gt;Disagree? You&#39;re welcome... Let me know in the comments. (Oops... no comments yet...)&lt;/p&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>Hi 👋</title>
