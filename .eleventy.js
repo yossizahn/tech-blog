@@ -83,6 +83,15 @@ module.exports = function(eleventyConfig) {
 
   // Browsersync Overrides
   eleventyConfig.setBrowserSyncConfig({
+    open: true,
+    snippetOptions: {
+      rule: {
+        match: /<\/head>/i,
+        fn: function (snippet, match) {
+          return snippet + match;
+        }
+      }
+    },
     callbacks: {
       ready: function(err, browserSync) {
         const content_404 = fs.readFileSync('_site/404.html');
