@@ -6,10 +6,10 @@ eleventyNavigation:
 ---
 
 {% set maxPosts = collections.posts.length | min(3) %}
-<h1>Latest {% if maxPosts == 1 %}Post{% else %}{{ maxPosts }} Posts{% endif %}</h1>
+<h1 class="my-8 text-sm text-gray-500">Latest {% if maxPosts == 1 %}Post{% else %}{{ maxPosts }} Posts{% endif %}</h1>
 
 {% set postslist = collections.posts | head(-3) %}
 {% set postslistCounter = collections.posts | length %}
 {% include "postslist.njk" %}
 
-<p>More posts can be found in <a href="{{ '/posts/' | url }}">the archive</a>.</p>
+<p class="my-24 text-gray-600">More posts can be found in <a href="{{ '/posts/' | url }}" class="underline">the archive</a>.</p>
