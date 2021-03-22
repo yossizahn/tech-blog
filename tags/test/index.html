@@ -11,40 +11,71 @@
     <script src="/tech-blog/assets/main.bundle.js"></script>
     <link rel="alternate" href="/tech-blog/feed/feed.xml" type="application/atom+xml" title="yosssizahn&#39;s tech blog">
     <link rel="alternate" href="/tech-blog/feed/feed.json" type="application/json" title="yosssizahn&#39;s tech blog">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
   </head>
-  <body>
-    <header>
-      <h1 class="home"><a href="/tech-blog/">yosssizahn&#39;s tech blog</a></h1>
-      <ul class="nav my-4">
-        <li class="nav-item"><a href="/tech-blog/">Home</a></li>
-        <li class="nav-item"><a href="/tech-blog/posts/">Archive</a></li>
-        <li class="nav-item"><a href="/tech-blog/about/">About Me</a></li>
-      </ul>
-    </header>
+  <body class="mt-6">
+    <div class="mx-auto max-w-3xl">
+      <header class="mb-24">
+        <ul class="flex justify-end">
+          <li class="m-4">
+            <a target="_blank" href="https://stackoverflow.com/users/8997905/yossizahn"><img width="24" src="/tech-blog/img/stack-overflow.png"/><a/></li>
+            <li class="m-4">
+              <a target="_blank" href="https://github.com/yossizahn"><img width="24" src="/tech-blog/img/github.png"/></a>
+            </li>
+            <li class="m-4">
+              <a target="_blank" href="https://www.buymeacoffee.com/yossizahn"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"></a>
+            </li>
+          </ul>
+          <h1 class="home mt-8 flex flex-col justify-center items-center">
+            <img class="mx-auto" src="https://secure.gravatar.com/avatar/3f9dbf0ed722a4dbe777ead1b0775174.jpg?s=150&amp;d=mm" width="80" height="80" alt="Yossi Zahn Avatar">
+            <a href="/tech-blog/" class="m-2 text-gray-700 font-bold  text-lg">yosssizahn&#39;s tech blog</a>
+          </h1>
+          <nav>
+            <ul class="nav flex justify-center">
+                <li class="nav-item m-4">
+                  <a href="/tech-blog/"  class="text-gray-500 ">Home</a>
+                </li>
+                <li class="nav-item m-4">
+                  <a href="/tech-blog/posts/"  class="text-gray-500 ">Archive</a>
+                </li>
+                <li class="nav-item m-4">
+                  <a href="/tech-blog/about/"  class="text-gray-500 ">About Me</a>
+                </li>
+            </ul>
+          </nav>
+        </header>
 
-    <main class="tmpl-home">
-      <h1>Tagged “test”</h1>
+        <main class="tmpl-home">
+          <h1>Tagged “test”</h1>
 
 
 <ol reversed class="postlist" style="counter-reset: start-from 2">
+  
+    <li class="postlist-item my-8">
+      <a href="/tech-blog/posts/hello-world/" class="postlist-link">
+        Hi 👋
+        
+      </a>
+      <div>
+        <time class="postlist-date" datetime="2021-03-11">11 Mar 2021</time>
+        
+            <a href="/tech-blog/tags/test/" class="post-tag">test</a>
+      </div>
 
-  <li class="postlist-item">
-    <a href="/tech-blog/posts/hello-world/" class="postlist-link">Hi 👋</a>
-    <time class="postlist-date" datetime="2021-03-11">11 Mar 2021</time>
-    
-      <a href="/tech-blog/tags/test/" class="post-tag">test</a>
-  </li>
-
+    </li>
+  
 </ol>
-
 
 <p>See <a href="/tech-blog/tags/">all tags</a>.</p>
 
 
-    </main>
+        </main>
 
-    <footer></footer>
+        <footer></footer>
 
-    <!-- Current page: /tech-blog/tags/test/ -->
-  </body>
-</html>
+        <!-- Current page: /tech-blog/tags/test/ -->
+      </div>
+    </body>
+  </html>
