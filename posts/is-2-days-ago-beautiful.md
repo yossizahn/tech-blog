@@ -41,3 +41,6 @@ Okay... `¯\_(ツ)_/¯`
 In my opinion this style of coding is not only bad, it is also *less readable and in a certain sense uglier*. "Why?" you may ask. Well in my mind, code is not prose. Code was never intended to be prose. And code that masquerades as prose requires more mental energy to translate it back into the code that it really is.
 
 Disagree? You're welcome... Let me know in the comments. (Oops... no comments yet...)
+
+## Update 2023-07-16
+Since I wrote this post `2.years.ago` 😉 I have become familiar with Smalltalk and clearly Ruby has inherited much from Smalltalk. [Pharo Smalltalk](https://pharo.org/) has a method `days` on numbers which returns a `Duration`. The `ago` extension seems to be unique to RoR though.
