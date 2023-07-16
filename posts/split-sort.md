@@ -83,12 +83,12 @@ All mathematical operations operate on the resulting 64 bit number.
 Let us exploit this to solve our problem. To recap: We want to sort numbers in ascending order, but considering all negative numbers as higher valued than positive numbers.
 
 To do this I came up with the above method. Let us step through the code:
-* `a - cutoff` We deduct the value of `cutoff` from the original number.
-* `1 << 31`Then we create a 32 bit pattern (mask) where only the leftmost bit is set to one (remember: bitwise operations operate on 32 bits).
-* We take the right and left values and smush them together (that’s a technical term 😉) using the XOR operator. This has the effect of flipping the sign bit while leaving the other bits alone.
-* We do this to both `a` and `b`
-* Then we do a mathematical operation (minus) on the numbers, this will coerce the bit pattern back into a number, _respecting the sign bit_
-Having flipped the sign bit, this will transpose a negative number from the negative realm to the positive realm and vice versa for positive numbers. NOTE: This is transposing NOT negating i.e. the number moves 2147483648 positions up or down the scale, not maintaining its magnitude (1 becomes -2147483647).
+* `a - cutoff` - deduct the value of `cutoff` from the original number.
+* `1 << 31` - create a 32 bit pattern (mask) where only the leftmost bit is set to one (remember: bitwise operations operate on 32 bits).
+* Take the right and left values and smush them together (that’s a technical term 😉) using the XOR operator. This has the effect of flipping the sign bit while leaving the other bits alone.
+* Do this to both `a` and `b`
+* Do a mathematical operation (minus) on the numbers, this will coerce the bit pattern back into a number, _respecting the sign bit_
+Having flipped the sign bit, this will transpose a negative number from the negative realm to the positive realm and vice versa for positive numbers. Note: This is _transposition_ not _negation_ i.e. the number moves 2147483648 positions up or down the scale, without maintaining its magnitude (1 becomes -2147483647).
 * Seeing as the previously negative numbers now have a higher value than the previous positive numbers, we can go ahead and use the regular `a - b`
 
 The end :)
