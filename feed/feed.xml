@@ -55,6 +55,7 @@ This allows us to rephrase the problem as follows:&lt;/p&gt;
 &lt;p&gt;Sort the list in ascending order, but consider all negatives to be of higher value than positives.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This rephrase lit up a light bulb in my head 💡.&lt;/p&gt;
+&lt;h2 id=&quot;2&#39;s-complement&quot; tabindex=&quot;-1&quot;&gt;2&#39;s complement &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#2&#39;s-complement&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;As developers we all have run into the situation where a signed integer overflows and suddenly your very large positive number becomes a very low negative number 🤕.&lt;br /&gt;
 e.g. adding 1 to the maximum value that an &lt;code&gt;int32&lt;/code&gt; can hold (2147483647) will return -2147483648. This is due to the way modern computers store signed numbers using the &lt;a href=&quot;https://en.wikipedia.org/wiki/Two&#39;s_complement&quot;&gt;Two’s complement&lt;/a&gt;) system.&lt;/p&gt;
 &lt;p&gt;Let us look at the bit layout of signed integers using the 2’s complement system. For simplicity we will look at a single byte number (I am assuming the reader is familiar with the basic binary counting system so I won’t explaining how bit patterns represent values):&lt;/p&gt;
