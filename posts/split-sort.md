@@ -58,6 +58,7 @@ This allows us to rephrase the problem as follows:
 
 This rephrase lit up a light bulb in my head 💡.
 
+## 2's complement
  As developers we all have run into the situation where a signed integer overflows and suddenly your very large positive number becomes a very low negative number 🤕.
 e.g. adding 1 to the maximum value that an `int32` can hold (2147483647) will return -2147483648. This is due to the way modern computers store signed numbers using the [Two’s complement](https://en.wikipedia.org/wiki/Two's_complement)) system.
 
