@@ -110,12 +110,12 @@ All mathematical operations operate on the resulting 64 bit number.</p>
 <p>Let us exploit this to solve our problem. To recap: We want to sort numbers in ascending order, but considering all negative numbers as higher valued than positive numbers.</p>
 <p>To do this I came up with the above method. Let us step through the code:</p>
 <ul>
-<li><code>a - cutoff</code> We deduct the value of <code>cutoff</code> from the original number.</li>
-<li><code>1 &lt;&lt; 31</code>Then we create a 32 bit pattern (mask) where only the leftmost bit is set to one (remember: bitwise operations operate on 32 bits).</li>
-<li>We take the right and left values and smush them together (that’s a technical term 😉) using the XOR operator. This has the effect of flipping the sign bit while leaving the other bits alone.</li>
-<li>We do this to both <code>a</code> and <code>b</code></li>
-<li>Then we do a mathematical operation (minus) on the numbers, this will coerce the bit pattern back into a number, <em>respecting the sign bit</em><br>
-Having flipped the sign bit, this will transpose a negative number from the negative realm to the positive realm and vice versa for positive numbers. NOTE: This is transposing NOT negating i.e. the number moves 2147483648 positions up or down the scale, not maintaining its magnitude (1 becomes -2147483647).</li>
+<li><code>a - cutoff</code> - deduct the value of <code>cutoff</code> from the original number.</li>
+<li><code>1 &lt;&lt; 31</code> - create a 32 bit pattern (mask) where only the leftmost bit is set to one (remember: bitwise operations operate on 32 bits).</li>
+<li>Take the right and left values and smush them together (that’s a technical term 😉) using the XOR operator. This has the effect of flipping the sign bit while leaving the other bits alone.</li>
+<li>Do this to both <code>a</code> and <code>b</code></li>
+<li>Do a mathematical operation (minus) on the numbers, this will coerce the bit pattern back into a number, <em>respecting the sign bit</em><br>
+Having flipped the sign bit, this will transpose a negative number from the negative realm to the positive realm and vice versa for positive numbers. Note: This is <em>transposition</em> not <em>negation</em> i.e. the number moves 2147483648 positions up or down the scale, without maintaining its magnitude (1 becomes -2147483647).</li>
 <li>Seeing as the previously negative numbers now have a higher value than the previous positive numbers, we can go ahead and use the regular <code>a - b</code></li>
 </ul>
 <p>The end :)</p>
