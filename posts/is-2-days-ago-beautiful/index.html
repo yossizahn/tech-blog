@@ -56,7 +56,10 @@
 <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> twoDaysAgo <span class="token operator">=</span> <span class="token function">moment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subtract</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'days'</span><span class="token punctuation">)</span></code></pre>
 <p>Nice. Readable. Sufficient.</p>
 <p>I came across this curious Ruby snippet recently:</p>
-<pre class="language-ruby"><code class="language-ruby">user <span class="token operator">=</span> <span class="token constant">User</span><span class="token punctuation">.</span>create<span class="token punctuation">(</span><br>  email<span class="token punctuation">:</span> <span class="token string">'user@example.com'</span><span class="token punctuation">,</span><br>  trial_ends_at<span class="token punctuation">:</span> <span class="token number">30.</span>days<span class="token punctuation">.</span>from_now<br><span class="token punctuation">)</span></code></pre>
+<pre class="language-ruby"><code class="language-ruby">user <span class="token operator">=</span> User<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
+  <span class="token symbol">email</span><span class="token operator">:</span> <span class="token string-literal"><span class="token string">'user@example.com'</span></span><span class="token punctuation">,</span>
+  <span class="token symbol">trial_ends_at</span><span class="token operator">:</span> <span class="token number">30.</span>days<span class="token punctuation">.</span>from_now
+<span class="token punctuation">)</span></code></pre>
 <p>Ruby on Rails users may find this code somewhat familiar. For me this came as a big surprise.</p>
 <p>After the initial double take, I tried understanding how this code actually works.<br>
 <em>There is no way that Ruby-core offers <code>days</code> as a method on integers. That would just be too ludicrous to imagine.</em></p>
@@ -69,10 +72,12 @@
 <p>Okay... <code>¯\_(ツ)_/¯</code></p>
 <p>In my opinion this style of coding is not only bad, it is also <em>less readable and in a certain sense uglier</em>. &quot;Why?&quot; you may ask. Well in my mind, code is not prose. Code was never intended to be prose. And code that masquerades as prose requires more mental energy to translate it back into the code that it really is.</p>
 <p>Disagree? You're welcome... Let me know in the comments. (Oops... no comments yet...)</p>
+<h2 id="update-2023-07-16" tabindex="-1">Update 2023-07-16 <a class="direct-link" href="#update-2023-07-16">#</a></h2>
+<p>Since I wrote this post <code>2.years.ago</code> 😉 I have become familiar with Smalltalk and clearly Ruby has inherited much from Smalltalk. <a href="https://pharo.org/">Pharo Smalltalk</a> has a method <code>days</code> on numbers which returns a <code>Duration</code>. The <code>ago</code> extension seems to be unique to RoR though.</p>
 
 
 </article>
-<ul class="my-12 text-gray-600" ><li>Previous: <a href="/tech-blog/posts/favourite-tools/" class="underline">My favorite tools</a></li>
+<ul class="my-12 text-gray-600" ><li>Next: <a href="/tech-blog/posts/split-sort/">“Split sort” with some bit twiddling</a></li><li>Previous: <a href="/tech-blog/posts/favourite-tools/" class="underline">My favorite tools</a></li>
 </ul>
 
         </main>

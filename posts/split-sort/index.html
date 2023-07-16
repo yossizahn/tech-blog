@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>“Split sort” with some bit twiddling</title>
+    <meta name="description" content="“Split sort” with some bit twiddling">
+    <link rel="stylesheet" href="/tech-blog/css/index.css">
+    <link rel="stylesheet" href="/tech-blog/css/prism-base16-monokai.dark.css">
+    <link rel="stylesheet" href="/tech-blog/assets/main.bundle.css">
+    <script src="/tech-blog/assets/main.bundle.js"></script>
+    <link rel="alternate" href="/tech-blog/feed/feed.xml" type="application/atom+xml" title="yosssizahn&#39;s tech blog">
+    <link rel="alternate" href="/tech-blog/feed/feed.json" type="application/json" title="yosssizahn&#39;s tech blog">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+  </head>
+  <body class="mt-6">
+    <div class="mx-auto max-w-3xl">
+      <header class="mb-24">
+        <ul class="flex justify-end">
+          <li class="m-4">
+            <a target="_blank" href="https://stackoverflow.com/users/8997905/yossizahn"><img width="24" src="/tech-blog/img/stack-overflow.png"/><a/></li>
+            <li class="m-4">
+              <a target="_blank" href="https://github.com/yossizahn"><img width="24" src="/tech-blog/img/github.png"/></a>
+            </li>
+            <li class="m-4">
+              <a target="_blank" href="https://www.buymeacoffee.com/yossizahn"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee"></a>
+            </li>
+          </ul>
+          <h1 class="home mt-8 flex flex-col justify-center items-center">
+            <img class="mx-auto" src="https://secure.gravatar.com/avatar/3f9dbf0ed722a4dbe777ead1b0775174.jpg?s=150&amp;d=mm" width="80" height="80" alt="Yossi Zahn Avatar">
+            <a href="/tech-blog/" class="m-2 text-gray-700 font-bold  text-lg">yosssizahn&#39;s tech blog</a>
+          </h1>
+          <nav>
+            <ul class="nav flex justify-center">
+                <li class="nav-item m-4">
+                  <a href="/tech-blog/"  class="text-gray-500 ">Home</a>
+                </li>
+                <li class="nav-item m-4">
+                  <a href="/tech-blog/posts/"  class="text-gray-500 ">Archive</a>
+                </li>
+                <li class="nav-item m-4">
+                  <a href="/tech-blog/about/"  class="text-gray-500 ">About Me</a>
+                </li>
+            </ul>
+          </nav>
+        </header>
+
+        <main class="tmpl-post">
+          <article class="prose">
+<h1>“Split sort” with some bit twiddling</h1>
+
+<h2 id="what-is-a-%E2%80%9Csplit-sort%E2%80%9D" tabindex="-1">What is a “split sort” <a class="direct-link" href="#what-is-a-%E2%80%9Csplit-sort%E2%80%9D">#</a></h2>
+<p>It all started with an innocent question posted on a small chat group. The poster wanted to sort a list of numbers in ascending order but with a twist: the ascension should start from a specific cutoff point, after reaching the highest number, the list should go back and list from the lowest number up to the cutoff point.<br>
+I will call this “split sort” for lack of a better term.</p>
+<p>Some code to demonstrate:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> list <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">]</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">sortFn</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">cutoff</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
+
+list<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token function">sortFn</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// [5,6,7,8,9,10,1,2,3,4]</span></code></pre>
+<p>The question is how to implement <code>sortFn</code>.</p>
+<h2 id="the-simple-solution" tabindex="-1">The simple solution <a class="direct-link" href="#the-simple-solution">#</a></h2>
+<p>After some consideration most people would come up with code similar to this:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">sortFn</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">cutoff</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">>=</span> cutoff <span class="token operator">&amp;&amp;</span> b <span class="token operator">>=</span> cutoff <span class="token operator">||</span> a <span class="token operator">&lt;</span> cutoff <span class="token operator">&amp;&amp;</span> b <span class="token operator">&lt;</span> cutoff<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">-</span> b
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> b <span class="token operator">-</span> a
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p><em>In words:</em></p>
+<blockquote>
+<p>If both numbers are either before of after the cutoff point -&gt; sort ascending, otherwise, i.e. the 2 numbers live on differing sides of the cutoff point -&gt; sort descending.</p>
+</blockquote>
+<p>This is pretty elegant.<br>
+But it it got me thinking: The normal numerical sort can be done with a mathematical expression with no conditionals, can “split sort” also be done without using any conditionals? 🤔</p>
+<h2 id="the-%E2%80%9Cclever%E2%80%9D-solution" tabindex="-1">The “clever” solution <a class="direct-link" href="#the-%E2%80%9Cclever%E2%80%9D-solution">#</a></h2>
+<p>After some thought I came up with this solution I would like to share.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">sortFn</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">cutoff</span><span class="token punctuation">)</span> <span class="token operator">=></span>
+  <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span>
+    <span class="token punctuation">(</span>a <span class="token operator">-</span> cutoff <span class="token operator">^</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">31</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token punctuation">(</span>b <span class="token operator">-</span> cutoff <span class="token operator">^</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">31</span><span class="token punctuation">)</span></code></pre>
+<h2 id="how-does-it-work%3F" tabindex="-1">How does it work? <a class="direct-link" href="#how-does-it-work%3F">#</a></h2>
+<p>I first started out by trying to simplify the problem. I came up with the following:</p>
+<p>Let us deduct <code>cutoff</code> from each number in the list. This will give us a list where all numbers above <code>cutoff</code> are positive and all numbers below are negative.<br>
+This allows us to rephrase the problem as follows:</p>
+<blockquote>
+<p>Sort the list in ascending order, but consider all negatives to be of higher value than positives.</p>
+</blockquote>
+<p>This rephrase lit up a light bulb in my head 💡.</p>
+<p>As developers we all have run into the situation where a signed integer overflows and suddenly your very large positive number becomes a very low negative number 🤕.<br>
+e.g. adding 1 to the maximum value that an <code>int32</code> can hold (2147483647) will return -2147483648. This is due to the way modern computers store signed numbers using the <a href="https://en.wikipedia.org/wiki/Two's_complement">Two’s complement</a>) system.</p>
+<p>Let us look at the bit layout of signed integers using the 2’s complement system. For simplicity we will look at a single byte number (I am assuming the reader is familiar with the basic binary counting system so I won’t explaining how bit patterns represent values):</p>
+<ul>
+<li>Zero value: <code>00000000</code></li>
+<li>Lowest positive number: <code>00000001</code>. The zeroed out leftmost bit (the “sign bit”) is a flag that tells us that this is a positive number. The seven other bits represent the value which is <code>1</code> in this case.</li>
+<li>Highest positive number: <code>01111111</code> . The zeroed out leftmost bit (the “sign bit”) is a flag that tells us that this is still a positive number, the seven remaining bits represent the number `127``, the highest number a signed byte can represent.</li>
+<li>Lowest negative number: <code>10000000</code>. The first bit is set to <code>1</code> to signify a negative number. The other bits are set to zero, this represents the lowest negative number a signed byte can represent: -128 (the lowest negative is always equal to the highest positive + <code>1</code>). Each successive bit pattern represents the next negative number until we climb back up to zero. The fact the zero lives on the positive side of the fence allows 1 more negative magnitude than positive.</li>
+</ul>
+<h3 id="what-does-all-this-mean-for-us%3F" tabindex="-1">What does all this mean for us? <a class="direct-link" href="#what-does-all-this-mean-for-us%3F">#</a></h3>
+<p>We all know that negative numbers have a lower value than positive numbers, and so does the computer’s processor. But… the exact same bits can also represent an <em>unsigned number</em> and then... the previously low negative numbers will suddenly become high value positive numbers 😲. The computer’s CPU also knows that. The CPU knows how to do signed math and unsigned math.</p>
+<p>In other words: (when peering through “unsigned glasses 😎”) negative numbers begin from where positive numbers end…</p>
+<h3 id="javascript%E2%80%99s-numbers" tabindex="-1">Javascript’s <code>Number</code>s <a class="direct-link" href="#javascript%E2%80%99s-numbers">#</a></h3>
+<p>In Javascript <em>all</em> numbers are represented as 64 bit floating point numbers. However, when doing binary bitwise operations the number is first coerced to a 32 bit integer.<br>
+The coercion will maintain the valence (“sign”) but truncate the the value to 32 bits.<br>
+After the operation, the resulting bits are converted back into 64 bit floating point numbers again maintaining the valence.<br>
+All mathematical operations operate on the resulting 64 bit number.</p>
+<h3 id="the-solution" tabindex="-1">The solution <a class="direct-link" href="#the-solution">#</a></h3>
+<p>Let us exploit this to solve our problem. To recap: We want to sort numbers in ascending order, but considering all negative numbers as higher valued than positive numbers.</p>
+<p>To do this I came up with the above method. Let us step through the code:</p>
+<ul>
+<li><code>a - cutoff</code> We deduct the value of <code>cutoff</code> from the original number.</li>
+<li><code>1 &lt;&lt; 31</code>Then we create a 32 bit pattern (mask) where only the leftmost bit is set to one (remember: bitwise operations operate on 32 bits).</li>
+<li>We take the right and left values and smush them together (that’s a technical term 😉) using the XOR operator. This has the effect of flipping the sign bit while leaving the other bits alone.</li>
+<li>We do this to both <code>a</code> and <code>b</code></li>
+<li>Then we do a mathematical operation (minus) on the numbers, this will coerce the bit pattern back into a number, <em>respecting the sign bit</em><br>
+Having flipped the sign bit, this will transpose a negative number from the negative realm to the positive realm and vice versa for positive numbers. NOTE: This is transposing NOT negating i.e. the number moves 2147483648 positions up or down the scale, not maintaining its magnitude (1 becomes -2147483647).</li>
+<li>Seeing as the previously negative numbers now have a higher value than the previous positive numbers, we can go ahead and use the regular <code>a - b</code></li>
+</ul>
+<p>The end :)</p>
+
+
+</article>
+<ul class="my-12 text-gray-600" ><li>Previous: <a href="/tech-blog/posts/is-2-days-ago-beautiful/" class="underline">Is `2.days.ago` a beautiful way of expressing a relative date?</a></li>
+</ul>
+
+        </main>
+
+        <footer></footer>
+
+        <!-- Current page: /tech-blog/posts/split-sort/ -->
+      </div>
+    </body>
+  </html>
