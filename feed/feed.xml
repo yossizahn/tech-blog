@@ -3,7 +3,7 @@
 	<title>yosssizahn&#39;s tech blog</title>
 	<subtitle>Interesting tech stuff I encounter.</subtitle>
 	
-	<link href="https://yossizahn.github.io/tech-blog/feed/feed.xml" rel="self"/>
+	<link href="https://yossizahn.github.io/feed/feed.xml" rel="self"/>
 	<link href="https://yossizahn.github.io/"/>
 	<updated>2023-07-16T00:00:00Z</updated>
 	<id>https://yossizahn.github.io/</id>
@@ -14,10 +14,10 @@
 	
 	<entry>
 		<title>“Split sort” with some bit twiddling</title>
-		<link href="https://yossizahn.github.io/tech-blog/posts/split-sort/"/>
+		<link href="https://yossizahn.github.io/posts/split-sort/"/>
 		<updated>2023-07-16T00:00:00Z</updated>
-		<id>https://yossizahn.github.io/tech-blog/posts/split-sort/</id>
-		<content type="html">&lt;h2 id=&quot;what-is-a-%E2%80%9Csplit-sort%E2%80%9D&quot; tabindex=&quot;-1&quot;&gt;What is a “split sort” &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#what-is-a-%E2%80%9Csplit-sort%E2%80%9D&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+		<id>https://yossizahn.github.io/posts/split-sort/</id>
+		<content type="html">&lt;h2 id=&quot;what-is-a-%E2%80%9Csplit-sort%E2%80%9D&quot; tabindex=&quot;-1&quot;&gt;What is a “split sort” &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#what-is-a-%E2%80%9Csplit-sort%E2%80%9D&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;It all started with an innocent question posted on a small chat group. The poster wanted to sort a list of numbers in ascending order but with a twist: the ascension should start from a specific cutoff point, after reaching the highest number, the list should go back and list from the lowest number up to the cutoff point.&lt;br /&gt;
 I will call this “split sort” for lack of a better term.&lt;/p&gt;
 &lt;p&gt;Some code to demonstrate:&lt;/p&gt;
@@ -27,7 +27,7 @@ I will call this “split sort” for lack of a better term.&lt;/p&gt;
 
 list&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;sortFn&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// [5,6,7,8,9,10,1,2,3,4]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The question is how to implement &lt;code&gt;sortFn&lt;/code&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;the-simple-solution&quot; tabindex=&quot;-1&quot;&gt;The simple solution &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#the-simple-solution&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;the-simple-solution&quot; tabindex=&quot;-1&quot;&gt;The simple solution &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#the-simple-solution&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;After some consideration most people would come up with code similar to this:&lt;/p&gt;
 &lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;sortFn&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;cutoff&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;token keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a &lt;span class=&quot;token operator&quot;&gt;&gt;=&lt;/span&gt; cutoff &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; b &lt;span class=&quot;token operator&quot;&gt;&gt;=&lt;/span&gt; cutoff &lt;span class=&quot;token operator&quot;&gt;||&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; cutoff &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; b &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; cutoff&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
@@ -42,12 +42,12 @@ list&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class
 &lt;/blockquote&gt;
 &lt;p&gt;This is not too bad. Fairly elegant.&lt;br /&gt;
 But it it got me thinking: The normal numerical sort can be done with a mathematical expression with no conditionals, can “split sort” also be done without using any conditionals? 🤔&lt;/p&gt;
-&lt;h2 id=&quot;the-%E2%80%9Cclever%E2%80%9D-solution&quot; tabindex=&quot;-1&quot;&gt;The “clever” solution &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#the-%E2%80%9Cclever%E2%80%9D-solution&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;the-%E2%80%9Cclever%E2%80%9D-solution&quot; tabindex=&quot;-1&quot;&gt;The “clever” solution &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#the-%E2%80%9Cclever%E2%80%9D-solution&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;After some thought I came up with this solution I would like to share.&lt;/p&gt;
 &lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;sortFn&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;cutoff&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt;
     &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; cutoff &lt;span class=&quot;token operator&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;31&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;b &lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt; cutoff &lt;span class=&quot;token operator&quot;&gt;^&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;31&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&quot;how-does-it-work%3F&quot; tabindex=&quot;-1&quot;&gt;How does it work? &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#how-does-it-work%3F&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;how-does-it-work%3F&quot; tabindex=&quot;-1&quot;&gt;How does it work? &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#how-does-it-work%3F&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I first started out by trying to simplify the problem. I came up with the following:&lt;/p&gt;
 &lt;p&gt;Let us deduct &lt;code&gt;cutoff&lt;/code&gt; from each number in the list. This will give us a list where all numbers above &lt;code&gt;cutoff&lt;/code&gt; are positive and all numbers below are negative.&lt;br /&gt;
 This allows us to rephrase the problem as follows:&lt;/p&gt;
@@ -55,7 +55,7 @@ This allows us to rephrase the problem as follows:&lt;/p&gt;
 &lt;p&gt;Sort the list in ascending order, but consider all negatives to be of higher value than positives.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This rephrase lit up a light bulb in my head 💡.&lt;/p&gt;
-&lt;h2 id=&quot;2&#39;s-complement&quot; tabindex=&quot;-1&quot;&gt;2&#39;s complement &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#2&#39;s-complement&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;2&#39;s-complement&quot; tabindex=&quot;-1&quot;&gt;2&#39;s complement &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#2&#39;s-complement&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;As developers we all have run into the situation where a signed integer overflows and suddenly your very large positive number becomes a very low negative number 🤕.&lt;br /&gt;
 e.g. adding 1 to the maximum value that an &lt;code&gt;int32&lt;/code&gt; can hold (2147483647) will return -2147483648. This is due to the way modern computers store signed numbers using the &lt;a href=&quot;https://en.wikipedia.org/wiki/Two&#39;s_complement&quot;&gt;Two’s complement&lt;/a&gt;) system.&lt;/p&gt;
 &lt;p&gt;Let us look at the bit layout of signed integers using the 2’s complement system. For simplicity we will look at a single byte number (I am assuming the reader is familiar with the basic binary counting system so I won’t explaining how bit patterns represent values):&lt;/p&gt;
@@ -65,17 +65,17 @@ e.g. adding 1 to the maximum value that an &lt;code&gt;int32&lt;/code&gt; can ho
 &lt;li&gt;Highest positive number: &lt;code&gt;01111111&lt;/code&gt; . The zeroed out leftmost bit (the “sign bit”) is a flag that tells us that this is still a positive number, the seven remaining bits represent the number &lt;code&gt;127&lt;/code&gt;, the highest number a signed byte can represent.&lt;/li&gt;
 &lt;li&gt;Lowest negative number: &lt;code&gt;10000000&lt;/code&gt;. The first bit is set to &lt;code&gt;1&lt;/code&gt; to signify a negative number. The other bits are set to zero, this represents the lowest negative number a signed byte can represent: &lt;code&gt;-128&lt;/code&gt; (the lowest negative is always equal to the highest positive + &lt;code&gt;1&lt;/code&gt;). Each successive bit pattern represents the next negative number until we climb back up to zero. The fact the zero lives on the positive side of the fence allows 1 more negative magnitude than positive.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;what-does-all-this-mean-for-us%3F&quot; tabindex=&quot;-1&quot;&gt;What does all this mean for us? &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#what-does-all-this-mean-for-us%3F&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;what-does-all-this-mean-for-us%3F&quot; tabindex=&quot;-1&quot;&gt;What does all this mean for us? &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#what-does-all-this-mean-for-us%3F&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;We all know that negative numbers have a lower value than positive numbers, and so does the computer’s processor. But… the exact same bits can also represent an &lt;em&gt;unsigned number&lt;/em&gt; and then... the previously low negative numbers will suddenly become high value positive numbers 😲. The computer’s CPU also knows that. The CPU knows how to do signed math and unsigned math.&lt;/p&gt;
 &lt;p&gt;In other words: (when peering through “unsigned glasses 😎”) negative numbers begin from where positive numbers end…&lt;/p&gt;
-&lt;h3 id=&quot;casting-attempts&quot; tabindex=&quot;-1&quot;&gt;Casting attempts &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#casting-attempts&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;casting-attempts&quot; tabindex=&quot;-1&quot;&gt;Casting attempts &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#casting-attempts&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;That leads us to the following thought:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;How about if we convince the processor to look at our numbers as unsigned integers just for the purpose of determining the order?&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Attempting this is not really possible in Javascript. The language doesn’t give us the facilities to tell the processor how to interpret a number.&lt;br /&gt;
 Would it work in another language? Say C#?&lt;/p&gt;
-&lt;h4 id=&quot;attempt-1%3A&quot; tabindex=&quot;-1&quot;&gt;Attempt 1: &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#attempt-1%3A&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;attempt-1%3A&quot; tabindex=&quot;-1&quot;&gt;Attempt 1: &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#attempt-1%3A&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;pre class=&quot;language-csharp&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;&lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt;&lt;/span&gt; arr &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Enumerable&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Range&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Select&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;_ &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token constructor-invocation class-name&quot;&gt;Random&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Next&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;ToList&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
@@ -95,7 +95,7 @@ Would it work in another language? Say C#?&lt;/p&gt;
 arr&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Sort&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;comparison&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Uh oh. &lt;code&gt;Comparison&lt;/code&gt; needs to return an &lt;code&gt;int&lt;/code&gt;. Obviously 🤦. It needs to have a way of returning &lt;code&gt;-1&lt;/code&gt;.&lt;br /&gt;
 Ok, let’s cast the result back to an &lt;code&gt;int&lt;/code&gt;:&lt;/p&gt;
-&lt;h4 id=&quot;attempt-2%3A&quot; tabindex=&quot;-1&quot;&gt;Attempt 2: &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#attempt-2%3A&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;attempt-2%3A&quot; tabindex=&quot;-1&quot;&gt;Attempt 2: &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#attempt-2%3A&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;pre class=&quot;language-csharp&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;&lt;span class=&quot;token return-type class-name&quot;&gt;Comparison&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;comparison&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;/span&gt; startFrom&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt;
@@ -107,7 +107,7 @@ Ok, let’s cast the result back to an &lt;code&gt;int&lt;/code&gt;:&lt;/p&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This looks like it should work. I still doesn’t. After some &lt;s&gt;thought&lt;/s&gt; debugging the obvious answer presents itself: &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;b&lt;/code&gt; are &lt;em&gt;unsigned&lt;/em&gt;. If &lt;code&gt;a - b&lt;/code&gt; results in a negative number we have an integer underflow…&lt;br /&gt;
 Ok, let’s recast back to an &lt;code&gt;int&lt;/code&gt; after interpreting the bits as a &lt;code&gt;uint&lt;/code&gt;.&lt;/p&gt;
-&lt;h4 id=&quot;attempt-3%3A&quot; tabindex=&quot;-1&quot;&gt;Attempt 3: &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#attempt-3%3A&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;attempt-3%3A&quot; tabindex=&quot;-1&quot;&gt;Attempt 3: &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#attempt-3%3A&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;pre class=&quot;language-csharp&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;&lt;span class=&quot;token return-type class-name&quot;&gt;Comparison&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;comparison&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;/span&gt; startFrom&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt;
@@ -119,7 +119,7 @@ Ok, let’s recast back to an &lt;code&gt;int&lt;/code&gt; after interpreting th
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Nope. A large positive &lt;code&gt;uint&lt;/code&gt; (which is what happens to our negative numbers) will revert back to negative because of that pesky sign bit.&lt;/p&gt;
 &lt;p&gt;How about if we recast to a &lt;code&gt;long&lt;/code&gt;? That should work.. 🤔&lt;/p&gt;
-&lt;h4 id=&quot;attempt-4%3A&quot; tabindex=&quot;-1&quot;&gt;Attempt 4: &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#attempt-4%3A&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;attempt-4%3A&quot; tabindex=&quot;-1&quot;&gt;Attempt 4: &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#attempt-4%3A&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
 &lt;pre class=&quot;language-csharp&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;&lt;span class=&quot;token return-type class-name&quot;&gt;Comparison&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;comparison&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;/span&gt; startFrom&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
 	&lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt;
@@ -131,15 +131,15 @@ Ok, let’s recast back to an &lt;code&gt;int&lt;/code&gt; after interpreting th
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Ah, but the sort function needs to return an &lt;code&gt;int&lt;/code&gt;. Now that the result of the subtraction is a &lt;code&gt;long&lt;/code&gt; , if we cast the answer back to an &lt;code&gt;int&lt;/code&gt; we loose the sign bit.&lt;br /&gt;
 In short: I couldn’t get this path to work without adding a conditional which defeats the whole point of the exercise.&lt;/p&gt;
-&lt;h2 id=&quot;transposing&quot; tabindex=&quot;-1&quot;&gt;Transposing &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#transposing&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;transposing&quot; tabindex=&quot;-1&quot;&gt;Transposing &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#transposing&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Here’s a different idea:&lt;br /&gt;
 If we flip the sign bit of the original numbers, we can transpose a negative number into the positive realm and vice versa for positive numbers. Note: This is &lt;em&gt;transposition&lt;/em&gt; not &lt;em&gt;negation&lt;/em&gt; i.e. the number moves 2147483648 positions up or down the scale, without preserving its &lt;em&gt;magnitude&lt;/em&gt; (1 becomes -2147483647).&lt;/p&gt;
-&lt;h3 id=&quot;javascript%E2%80%99s-numbers&quot; tabindex=&quot;-1&quot;&gt;Javascript’s &lt;code&gt;Number&lt;/code&gt;s &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#javascript%E2%80%99s-numbers&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;javascript%E2%80%99s-numbers&quot; tabindex=&quot;-1&quot;&gt;Javascript’s &lt;code&gt;Number&lt;/code&gt;s &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#javascript%E2%80%99s-numbers&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;In Javascript &lt;em&gt;all&lt;/em&gt; numbers are represented as 64 bit floating point numbers. However, when doing binary bitwise operations the number is first coerced to a 32 bit integer.&lt;br /&gt;
 The coercion will preserve the valence (“sign”) but truncate the the value to 32 bits.&lt;br /&gt;
 After the operation, the resulting bits are converted back into 64 bit floating point numbers again preserving the valence.&lt;br /&gt;
 All mathematical operations operate on the resulting 64 bit number.&lt;/p&gt;
-&lt;h3 id=&quot;the-solution&quot; tabindex=&quot;-1&quot;&gt;The solution &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#the-solution&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;the-solution&quot; tabindex=&quot;-1&quot;&gt;The solution &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#the-solution&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Let us exploit this to solve our problem. To recap: We want to sort numbers in ascending order, but considering all negative numbers as higher valued than positive numbers.&lt;/p&gt;
 &lt;p&gt;To do this I came up with the above method. Let us step through the code:&lt;/p&gt;
 &lt;ul&gt;
@@ -151,7 +151,7 @@ All mathematical operations operate on the resulting 64 bit number.&lt;/p&gt;
 Having flipped the sign bit, this will transpose a negative number from the negative realm to the positive realm and vice versa for positive numbers.&lt;/li&gt;
 &lt;li&gt;Seeing as the previously negative numbers now have a higher value than the previous positive numbers, we can go ahead and use the regular &lt;code&gt;a - b&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;in-c%23&quot; tabindex=&quot;-1&quot;&gt;In C# &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/split-sort/#in-c%23&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;in-c%23&quot; tabindex=&quot;-1&quot;&gt;In C# &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/split-sort/#in-c%23&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Here is a slightly messier C# version:&lt;/p&gt;
 &lt;pre class=&quot;language-csharp&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;&lt;span class=&quot;token return-type class-name&quot;&gt;Comparison&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;comparison&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;int&lt;/span&gt;&lt;/span&gt; startFrom&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
@@ -167,9 +167,9 @@ Having flipped the sign bit, this will transpose a negative number from the nega
 	
 	<entry>
 		<title>Is `2.days.ago` a beautiful way of expressing a relative date?</title>
-		<link href="https://yossizahn.github.io/tech-blog/posts/is-2-days-ago-beautiful/"/>
+		<link href="https://yossizahn.github.io/posts/is-2-days-ago-beautiful/"/>
 		<updated>2021-03-14T00:00:00Z</updated>
-		<id>https://yossizahn.github.io/tech-blog/posts/is-2-days-ago-beautiful/</id>
+		<id>https://yossizahn.github.io/posts/is-2-days-ago-beautiful/</id>
 		<content type="html">&lt;p&gt;A common scenario: You need to calculate a date as a value relative to the current date.&lt;/p&gt;
 &lt;p&gt;Using the popular (albeit &lt;a href=&quot;https://momentjs.com/docs/#/-project-status/&quot;&gt;somewhat deprecated&lt;/a&gt;) &lt;a href=&quot;https://momentjs.com/&quot;&gt;moment.js&lt;/a&gt;, this can be expressed as follows:&lt;/p&gt;
 &lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; twoDaysAgo &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;moment&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;subtract&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;days&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
@@ -191,17 +191,17 @@ Having flipped the sign bit, this will transpose a negative number from the nega
 &lt;p&gt;Okay... &lt;code&gt;¯\_(ツ)_/¯&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;In my opinion this style of coding is not only bad, it is also &lt;em&gt;less readable and in a certain sense uglier&lt;/em&gt;. &amp;quot;Why?&amp;quot; you may ask. Well in my mind, code is not prose. Code was never intended to be prose. And code that masquerades as prose requires more mental energy to translate it back into the code that it really is.&lt;/p&gt;
 &lt;p&gt;Disagree? You&#39;re welcome... Let me know in the comments. (Oops... no comments yet...)&lt;/p&gt;
-&lt;h2 id=&quot;update-2023-07-16&quot; tabindex=&quot;-1&quot;&gt;Update 2023-07-16 &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/is-2-days-ago-beautiful/#update-2023-07-16&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;update-2023-07-16&quot; tabindex=&quot;-1&quot;&gt;Update 2023-07-16 &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/is-2-days-ago-beautiful/#update-2023-07-16&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Since I wrote this post &lt;code&gt;2.years.ago&lt;/code&gt; 😉 I have become familiar with Smalltalk and clearly Ruby has inherited much from Smalltalk. &lt;a href=&quot;https://pharo.org/&quot;&gt;Pharo Smalltalk&lt;/a&gt; has a method &lt;code&gt;days&lt;/code&gt; on numbers which returns a &lt;code&gt;Duration&lt;/code&gt;. The &lt;code&gt;ago&lt;/code&gt; extension seems to be unique to RoR though.&lt;/p&gt;
 </content>
 	</entry>
 	
 	<entry>
 		<title>My favorite tools</title>
-		<link href="https://yossizahn.github.io/tech-blog/posts/favourite-tools/"/>
+		<link href="https://yossizahn.github.io/posts/favourite-tools/"/>
 		<updated>2021-03-13T00:00:00Z</updated>
-		<id>https://yossizahn.github.io/tech-blog/posts/favourite-tools/</id>
-		<content type="html">&lt;h2 id=&quot;introduction&quot; tabindex=&quot;-1&quot;&gt;Introduction &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#introduction&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+		<id>https://yossizahn.github.io/posts/favourite-tools/</id>
+		<content type="html">&lt;h2 id=&quot;introduction&quot; tabindex=&quot;-1&quot;&gt;Introduction &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/favourite-tools/#introduction&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;I will try to keep an updated list of my favorite tools here.&lt;/p&gt;
 &lt;p&gt;It will be split as follows:&lt;/p&gt;
 &lt;ul&gt;
@@ -209,9 +209,9 @@ Having flipped the sign bit, this will transpose a negative number from the nega
 &lt;li&gt;This will be followed by a list of tools I use, grouped by category. These tools are chosen by me as the best in category for the job I use them for. However they are either already very well-known, or just not good enough to deserve a massive shout out.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Let&#39;s start!&lt;/p&gt;
-&lt;h2 id=&quot;big-shout-out-for-these-tools-%F0%9F%93%A2&quot; tabindex=&quot;-1&quot;&gt;Big shout out for these tools 📢 &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#big-shout-out-for-these-tools-%F0%9F%93%A2&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;big-shout-out-for-these-tools-%F0%9F%93%A2&quot; tabindex=&quot;-1&quot;&gt;Big shout out for these tools 📢 &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/favourite-tools/#big-shout-out-for-these-tools-%F0%9F%93%A2&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;These are tools that I think are amazing and more people should know about them and use them. The tools are listed in no particular order.&lt;/p&gt;
-&lt;h3 id=&quot;pdf-xchange-editor-(freemium)&quot; tabindex=&quot;-1&quot;&gt;&lt;a href=&quot;https://www.tracker-software.com/product/pdf-xchange-editor&quot;&gt;PDF-Xchange Editor&lt;/a&gt; (Freemium) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#pdf-xchange-editor-(freemium)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;pdf-xchange-editor-(freemium)&quot; tabindex=&quot;-1&quot;&gt;&lt;a href=&quot;https://www.tracker-software.com/product/pdf-xchange-editor&quot;&gt;PDF-Xchange Editor&lt;/a&gt; (Freemium) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/favourite-tools/#pdf-xchange-editor-(freemium)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.tracker-software.com/product/pdf-xchange-editor&quot;&gt;PDF-Xchange Editor&lt;/a&gt; from &lt;a href=&quot;https://www.tracker-software.com/&quot;&gt;Tracker Software&lt;/a&gt; is hands-down my favorite PDF Editor.&lt;/p&gt;
 &lt;p&gt;I like it because:&lt;/p&gt;
 &lt;ul&gt;
@@ -220,7 +220,7 @@ Having flipped the sign bit, this will transpose a negative number from the nega
 &lt;li&gt;Tracker&#39;s customer support is something I have not seen anywhere else. The support personal are  knowledgeable, friendly and very responsive. No question in the &lt;a href=&quot;https://forum.tracker-software.com/viewforum.php?f=50&quot;&gt;support forum&lt;/a&gt; is left unanswered, no email is ignored. Just overall amazing.&lt;/li&gt;
 &lt;li&gt;They have a buy-once licensing scheme instead of a subscription model.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;everything-(free%2C-proprietary)&quot; tabindex=&quot;-1&quot;&gt;&lt;a href=&quot;https://www.voidtools.com/&quot;&gt;Everything&lt;/a&gt; (Free, Proprietary) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#everything-(free%2C-proprietary)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;everything-(free%2C-proprietary)&quot; tabindex=&quot;-1&quot;&gt;&lt;a href=&quot;https://www.voidtools.com/&quot;&gt;Everything&lt;/a&gt; (Free, Proprietary) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/favourite-tools/#everything-(free%2C-proprietary)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.voidtools.com/&quot;&gt;Everything&lt;/a&gt; is an amazing file search tool from &lt;a href=&quot;https://www.voidtools.com/&quot;&gt;voidtools&lt;/a&gt;. Now, I would have thought (and still do think so...) that Everything is a terrible name for a tool (&amp;quot;Hey, have you heard of everything?&amp;quot;, &amp;quot;Heard of what??? 😕&amp;quot;). But apparently it is good enough to come out first in a &lt;a href=&quot;https://www.google.com/search?q=Everything&quot;&gt;Google search&lt;/a&gt; for the word &amp;quot;everything&amp;quot;.&lt;/p&gt;
 &lt;p&gt;My favorite use for it, is something it wasn&#39;t designed for. I&lt;/p&gt;
 &lt;p&gt;I like it because:&lt;/p&gt;
@@ -228,25 +228,25 @@ Having flipped the sign bit, this will transpose a negative number from the nega
 &lt;li&gt;It is very light-weight, extremely fast and very featureful.&lt;/li&gt;
 &lt;li&gt;It is actively maintained and seems to be of very high quality code.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;process-hacker-(open-source)&quot; tabindex=&quot;-1&quot;&gt;&lt;a href=&quot;https://processhacker.sourceforge.io/nightly.php&quot;&gt;Process Hacker&lt;/a&gt; (Open source) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#process-hacker-(open-source)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;ranger-(open-source)&quot; tabindex=&quot;-1&quot;&gt;&lt;a href=&quot;https://ranger.github.io/&quot;&gt;Ranger&lt;/a&gt; (Open source) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#ranger-(open-source)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;fork-(proprietary)&quot; tabindex=&quot;-1&quot;&gt;&lt;a href=&quot;https://fork.dev/&quot;&gt;Fork&lt;/a&gt; (Proprietary) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#fork-(proprietary)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;windows-terminal-(open-source)&quot; tabindex=&quot;-1&quot;&gt;Windows Terminal (Open source) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#windows-terminal-(open-source)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;h2 id=&quot;mini-shout-out-for-these%3A&quot; tabindex=&quot;-1&quot;&gt;Mini shout out for these: &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#mini-shout-out-for-these%3A&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
-&lt;h3 id=&quot;7-zip&quot; tabindex=&quot;-1&quot;&gt;7-zip &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#7-zip&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;clink&quot; tabindex=&quot;-1&quot;&gt;Clink &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#clink&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;tableplus&quot; tabindex=&quot;-1&quot;&gt;TablePlus &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#tableplus&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;paint.net&quot; tabindex=&quot;-1&quot;&gt;&lt;a href=&quot;http://paint.net/&quot;&gt;Paint.net&lt;/a&gt; &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#paint.net&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
-&lt;h2 id=&quot;the-full-unabridged-list-of-stuff-i-use&quot; tabindex=&quot;-1&quot;&gt;The full unabridged list of stuff I use &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/tech-blog/posts/favourite-tools/#the-full-unabridged-list-of-stuff-i-use&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;process-hacker-(open-source)&quot; tabindex=&quot;-1&quot;&gt;&lt;a href=&quot;https://processhacker.sourceforge.io/nightly.php&quot;&gt;Process Hacker&lt;/a&gt; (Open source) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/favourite-tools/#process-hacker-(open-source)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;ranger-(open-source)&quot; tabindex=&quot;-1&quot;&gt;&lt;a href=&quot;https://ranger.github.io/&quot;&gt;Ranger&lt;/a&gt; (Open source) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/favourite-tools/#ranger-(open-source)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;fork-(proprietary)&quot; tabindex=&quot;-1&quot;&gt;&lt;a href=&quot;https://fork.dev/&quot;&gt;Fork&lt;/a&gt; (Proprietary) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/favourite-tools/#fork-(proprietary)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;windows-terminal-(open-source)&quot; tabindex=&quot;-1&quot;&gt;Windows Terminal (Open source) &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/favourite-tools/#windows-terminal-(open-source)&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&quot;mini-shout-out-for-these%3A&quot; tabindex=&quot;-1&quot;&gt;Mini shout out for these: &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/favourite-tools/#mini-shout-out-for-these%3A&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;7-zip&quot; tabindex=&quot;-1&quot;&gt;7-zip &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/favourite-tools/#7-zip&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;clink&quot; tabindex=&quot;-1&quot;&gt;Clink &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/favourite-tools/#clink&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;tableplus&quot; tabindex=&quot;-1&quot;&gt;TablePlus &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/favourite-tools/#tableplus&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;paint.net&quot; tabindex=&quot;-1&quot;&gt;&lt;a href=&quot;http://paint.net/&quot;&gt;Paint.net&lt;/a&gt; &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/favourite-tools/#paint.net&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;h2 id=&quot;the-full-unabridged-list-of-stuff-i-use&quot; tabindex=&quot;-1&quot;&gt;The full unabridged list of stuff I use &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/favourite-tools/#the-full-unabridged-list-of-stuff-i-use&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;em&gt;to be continued...&lt;/em&gt;&lt;/p&gt;
 </content>
 	</entry>
 	
 	<entry>
 		<title>Hi 👋</title>
-		<link href="https://yossizahn.github.io/tech-blog/posts/hello-world/"/>
+		<link href="https://yossizahn.github.io/posts/hello-world/"/>
 		<updated>2021-03-11T00:00:00Z</updated>
-		<id>https://yossizahn.github.io/tech-blog/posts/hello-world/</id>
+		<id>https://yossizahn.github.io/posts/hello-world/</id>
 		<content type="html">&lt;p&gt;An empty post...&lt;br /&gt;
 One day I may write something...&lt;/p&gt;
 </content>
