@@ -67,12 +67,7 @@
   </url>
   
   <url>
-    <loc>https://yossizahn.github.io/tags/bit%20twiddling/</loc>
-    <lastmod>2025-08-19</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yossizahn.github.io/tags/programming/</loc>
+    <loc>https://yossizahn.github.io/tags/test/</loc>
     <lastmod>2025-08-19</lastmod>
   </url>
   
@@ -82,7 +77,12 @@
   </url>
   
   <url>
-    <loc>https://yossizahn.github.io/tags/test/</loc>
+    <loc>https://yossizahn.github.io/tags/bit%20twiddling/</loc>
+    <lastmod>2025-08-19</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yossizahn.github.io/tags/programming/</loc>
     <lastmod>2025-08-19</lastmod>
   </url>
 </urlset>
