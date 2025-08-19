@@ -52,7 +52,7 @@
 <h1>Is `2.days.ago` a beautiful way of expressing a relative date?</h1>
 
 <p>A common scenario: You need to calculate a date as a value relative to the current date.</p>
-<p>Using the popular (albeit <a href="https://momentjs.com/docs/#/-project-status/">somewhat deprecated</a>) <a href="https://momentjs.com/">moment.js</a>, this can be expressed as follows:</p>
+<p>Using the popular (albeit <a href="https://momentjs.com/docs/#/-project-status/" target="_blank" rel="noopener noreferrer" class="external-link">somewhat deprecated</a>) <a href="https://momentjs.com/" target="_blank" rel="noopener noreferrer" class="external-link">moment.js</a>, this can be expressed as follows:</p>
 <pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> twoDaysAgo <span class="token operator">=</span> <span class="token function">moment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">subtract</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'days'</span><span class="token punctuation">)</span></code></pre>
 <p>Nice. Readable. Sufficient.</p>
 <p>I came across this curious Ruby snippet recently:</p>
@@ -63,17 +63,17 @@
 <p>Ruby on Rails users may find this code somewhat familiar. For me this came as a big surprise.</p>
 <p>After the initial double take, I tried understanding how this code actually works.<br>
 <em>There is no way that Ruby-core offers <code>days</code> as a method on integers. That would just be too ludicrous to imagine.</em></p>
-<p>Turns out, that Ruby allows (encourages?) extending native types, <em>and</em> this seems to be a popular practice. Whereas in JS land - where I live - it is generally frowned upon, in Ruby (on Rails?) it seems to be the norm to extend native types. There is even a utility library specifically for this purpose named <a href="https://guides.rubyonrails.org/active_support_core_extensions.html">Active Support</a>.</p>
+<p>Turns out, that Ruby allows (encourages?) extending native types, <em>and</em> this seems to be a popular practice. Whereas in JS land - where I live - it is generally frowned upon, in Ruby (on Rails?) it seems to be the norm to extend native types. There is even a utility library specifically for this purpose named <a href="https://guides.rubyonrails.org/active_support_core_extensions.html" target="_blank" rel="noopener noreferrer" class="external-link">Active Support</a>.</p>
 <p>So... the <code>days</code> extension-method of integers, returns a <code>Duration</code> object. And duration objects apparently have an <code>ago</code> method, which returns a <code>Date</code> which is offset <code>$duration</code> amount of time into the past. Exhilarating? Beautiful?</p>
-<p>Listen to what DHH (David Heinemeier Hansson, the creator of RoR) <a href="https://rubyonrails.org/doctrine/#optimize-for-programmer-happiness:~:text=But%20both%20decisions%20still%2C%20to%20this,Rails%20after%2012%20years%20of%20service.">has to say</a> about this style of coding:</p>
+<p>Listen to what DHH (David Heinemeier Hansson, the creator of RoR) <a href="https://rubyonrails.org/doctrine/#optimize-for-programmer-happiness:~:text=But%20both%20decisions%20still%2C%20to%20this,Rails%20after%2012%20years%20of%20service." target="_blank" rel="noopener noreferrer" class="external-link">has to say</a> about this style of coding:</p>
 <blockquote>
 <p>... both decisions still, to this day, make me smile. I relish getting to write <code>people.third</code> in a test case or the console. No, that’s not logical. It’s not efficient. It may even be pathological. But it continues to make me smile, thus fulfilling the principle and enriching my life, helping to justify my continued involvement with Rails after 12 years of service.</p>
 </blockquote>
 <p>Okay... <code>¯\_(ツ)_/¯</code></p>
 <p>In my opinion this style of coding is not only bad, it is also <em>less readable and in a certain sense uglier</em>. &quot;Why?&quot; you may ask. Well in my mind, code is not prose. Code was never intended to be prose. And code that masquerades as prose requires more mental energy to translate it back into the code that it really is.</p>
 <p>Disagree? You're welcome... Let me know in the comments. (Oops... no comments yet...)</p>
-<h2 id="update-2023-07-16" tabindex="-1">Update 2023-07-16 <a class="direct-link" href="#update-2023-07-16">#</a></h2>
-<p>Since I wrote this post <code>2.years.ago</code> 😉 I have become familiar with Smalltalk and clearly Ruby has inherited much from Smalltalk. <a href="https://pharo.org/">Pharo Smalltalk</a> has a method <code>days</code> on numbers which returns a <code>Duration</code>. The <code>ago</code> extension seems to be unique to RoR though.</p>
+<h2 id="update-2023-07-16" tabindex="-1">Update 2023-07-16 <a class="external-link" href="#update-2023-07-16" target="_blank" rel="noopener noreferrer">#</a></h2>
+<p>Since I wrote this post <code>2.years.ago</code> 😉 I have become familiar with Smalltalk and clearly Ruby has inherited much from Smalltalk. <a href="https://pharo.org/" target="_blank" rel="noopener noreferrer" class="external-link">Pharo Smalltalk</a> has a method <code>days</code> on numbers which returns a <code>Duration</code>. The <code>ago</code> extension seems to be unique to RoR though.</p>
 
 
 </article>

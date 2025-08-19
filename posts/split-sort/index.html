@@ -51,7 +51,7 @@
           <article class="prose">
 <h1>“Split sort” with some bit twiddling</h1>
 
-<h2 id="what-is-a-%E2%80%9Csplit-sort%E2%80%9D" tabindex="-1">What is a “split sort” <a class="direct-link" href="#what-is-a-%E2%80%9Csplit-sort%E2%80%9D">#</a></h2>
+<h2 id="what-is-a-%E2%80%9Csplit-sort%E2%80%9D" tabindex="-1">What is a “split sort” <a class="external-link" href="#what-is-a-%E2%80%9Csplit-sort%E2%80%9D" target="_blank" rel="noopener noreferrer">#</a></h2>
 <p>It all started with an innocent question posted on a small chat group. The poster wanted to sort a list of numbers in ascending order but with a twist: the ascension should start from a specific cutoff point, after reaching the highest number, the list should go back and list from the lowest number up to the cutoff point.<br>
 I will call this “split sort” for lack of a better term.</p>
 <p>Some code to demonstrate:</p>
@@ -61,7 +61,7 @@ I will call this “split sort” for lack of a better term.</p>
 
 list<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token function">sortFn</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// [5,6,7,8,9,10,1,2,3,4]</span></code></pre>
 <p>The question is how to implement <code>sortFn</code>.</p>
-<h2 id="the-simple-solution" tabindex="-1">The simple solution <a class="direct-link" href="#the-simple-solution">#</a></h2>
+<h2 id="the-simple-solution" tabindex="-1">The simple solution <a class="external-link" href="#the-simple-solution" target="_blank" rel="noopener noreferrer">#</a></h2>
 <p>After some consideration most people would come up with code similar to this:</p>
 <pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">sortFn</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">cutoff</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span>a <span class="token operator">>=</span> cutoff <span class="token operator">&amp;&amp;</span> b <span class="token operator">>=</span> cutoff <span class="token operator">||</span> a <span class="token operator">&lt;</span> cutoff <span class="token operator">&amp;&amp;</span> b <span class="token operator">&lt;</span> cutoff<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -76,12 +76,12 @@ list<span class="token punctuation">.</span><span class="token function">sort</s
 </blockquote>
 <p>This is not too bad. Fairly elegant.<br>
 But it it got me thinking: The normal numerical sort can be done with a mathematical expression with no conditionals, can “split sort” also be done without using any conditionals? 🤔</p>
-<h2 id="the-%E2%80%9Cclever%E2%80%9D-solution" tabindex="-1">The “clever” solution <a class="direct-link" href="#the-%E2%80%9Cclever%E2%80%9D-solution">#</a></h2>
+<h2 id="the-%E2%80%9Cclever%E2%80%9D-solution" tabindex="-1">The “clever” solution <a class="external-link" href="#the-%E2%80%9Cclever%E2%80%9D-solution" target="_blank" rel="noopener noreferrer">#</a></h2>
 <p>After some thought I came up with this solution I would like to share.</p>
 <pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">sortFn</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">cutoff</span><span class="token punctuation">)</span> <span class="token operator">=></span>
   <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span>
     <span class="token punctuation">(</span>a <span class="token operator">-</span> cutoff <span class="token operator">^</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">31</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token punctuation">(</span>b <span class="token operator">-</span> cutoff <span class="token operator">^</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">31</span><span class="token punctuation">)</span></code></pre>
-<h2 id="how-does-it-work%3F" tabindex="-1">How does it work? <a class="direct-link" href="#how-does-it-work%3F">#</a></h2>
+<h2 id="how-does-it-work%3F" tabindex="-1">How does it work? <a class="external-link" href="#how-does-it-work%3F" target="_blank" rel="noopener noreferrer">#</a></h2>
 <p>I first started out by trying to simplify the problem. I came up with the following:</p>
 <p>Let us deduct <code>cutoff</code> from each number in the list. This will give us a list where all numbers above <code>cutoff</code> are positive and all numbers below are negative.<br>
 This allows us to rephrase the problem as follows:</p>
@@ -89,9 +89,9 @@ This allows us to rephrase the problem as follows:</p>
 <p>Sort the list in ascending order, but consider all negatives to be of higher value than positives.</p>
 </blockquote>
 <p>This rephrase lit up a light bulb in my head 💡.</p>
-<h2 id="2's-complement" tabindex="-1">2's complement <a class="direct-link" href="#2's-complement">#</a></h2>
+<h2 id="2's-complement" tabindex="-1">2's complement <a class="external-link" href="#2's-complement" target="_blank" rel="noopener noreferrer">#</a></h2>
 <p>As developers we all have run into the situation where a signed integer overflows and suddenly your very large positive number becomes a very low negative number 🤕.<br>
-e.g. adding 1 to the maximum value that an <code>int32</code> can hold (2147483647) will return -2147483648. This is due to the way modern computers store signed numbers using the <a href="https://en.wikipedia.org/wiki/Two's_complement">Two’s complement</a>) system.</p>
+e.g. adding 1 to the maximum value that an <code>int32</code> can hold (2147483647) will return -2147483648. This is due to the way modern computers store signed numbers using the <a href="https://en.wikipedia.org/wiki/Two's_complement" target="_blank" rel="noopener noreferrer" class="external-link">Two’s complement</a>) system.</p>
 <p>Let us look at the bit layout of signed integers using the 2’s complement system. For simplicity we will look at a single byte number (I am assuming the reader is familiar with the basic binary counting system so I won’t explaining how bit patterns represent values):</p>
 <ul>
 <li>Zero value: <code>00000000</code></li>
@@ -99,17 +99,17 @@ e.g. adding 1 to the maximum value that an <code>int32</code> can hold (21474836
 <li>Highest positive number: <code>01111111</code> . The zeroed out leftmost bit (the “sign bit”) is a flag that tells us that this is still a positive number, the seven remaining bits represent the number <code>127</code>, the highest number a signed byte can represent.</li>
 <li>Lowest negative number: <code>10000000</code>. The first bit is set to <code>1</code> to signify a negative number. The other bits are set to zero, this represents the lowest negative number a signed byte can represent: <code>-128</code> (the lowest negative is always equal to the highest positive + <code>1</code>). Each successive bit pattern represents the next negative number until we climb back up to zero. The fact the zero lives on the positive side of the fence allows 1 more negative magnitude than positive.</li>
 </ul>
-<h3 id="what-does-all-this-mean-for-us%3F" tabindex="-1">What does all this mean for us? <a class="direct-link" href="#what-does-all-this-mean-for-us%3F">#</a></h3>
+<h3 id="what-does-all-this-mean-for-us%3F" tabindex="-1">What does all this mean for us? <a class="external-link" href="#what-does-all-this-mean-for-us%3F" target="_blank" rel="noopener noreferrer">#</a></h3>
 <p>We all know that negative numbers have a lower value than positive numbers, and so does the computer’s processor. But… the exact same bits can also represent an <em>unsigned number</em> and then... the previously low negative numbers will suddenly become high value positive numbers 😲. The computer’s CPU also knows that. The CPU knows how to do signed math and unsigned math.</p>
 <p>In other words: (when peering through “unsigned glasses 😎”) negative numbers begin from where positive numbers end…</p>
-<h3 id="casting-attempts" tabindex="-1">Casting attempts <a class="direct-link" href="#casting-attempts">#</a></h3>
+<h3 id="casting-attempts" tabindex="-1">Casting attempts <a class="external-link" href="#casting-attempts" target="_blank" rel="noopener noreferrer">#</a></h3>
 <p>That leads us to the following thought:</p>
 <blockquote>
 <p>How about if we convince the processor to look at our numbers as unsigned integers just for the purpose of determining the order?</p>
 </blockquote>
 <p>Attempting this is not really possible in Javascript. The language doesn’t give us the facilities to tell the processor how to interpret a number.<br>
 Would it work in another language? Say C#?</p>
-<h4 id="attempt-1%3A" tabindex="-1">Attempt 1: <a class="direct-link" href="#attempt-1%3A">#</a></h4>
+<h4 id="attempt-1%3A" tabindex="-1">Attempt 1: <a class="external-link" href="#attempt-1%3A" target="_blank" rel="noopener noreferrer">#</a></h4>
 <pre class="language-csharp"><code class="language-csharp"><span class="token class-name"><span class="token keyword">var</span></span> arr <span class="token operator">=</span> Enumerable<span class="token punctuation">.</span><span class="token function">Range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">Select</span><span class="token punctuation">(</span>_ <span class="token operator">=></span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Next</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">ToList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -129,7 +129,7 @@ Would it work in another language? Say C#?</p>
 arr<span class="token punctuation">.</span><span class="token function">Sort</span><span class="token punctuation">(</span><span class="token function">comparison</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Uh oh. <code>Comparison</code> needs to return an <code>int</code>. Obviously 🤦. It needs to have a way of returning <code>-1</code>.<br>
 Ok, let’s cast the result back to an <code>int</code>:</p>
-<h4 id="attempt-2%3A" tabindex="-1">Attempt 2: <a class="direct-link" href="#attempt-2%3A">#</a></h4>
+<h4 id="attempt-2%3A" tabindex="-1">Attempt 2: <a class="external-link" href="#attempt-2%3A" target="_blank" rel="noopener noreferrer">#</a></h4>
 <pre class="language-csharp"><code class="language-csharp"><span class="token return-type class-name">Comparison<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">></span></span> <span class="token function">comparison</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> startFrom<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
 	<span class="token keyword">return</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=></span>
@@ -141,7 +141,7 @@ Ok, let’s cast the result back to an <code>int</code>:</p>
 <span class="token punctuation">}</span></code></pre>
 <p>This looks like it should work. I still doesn’t. After some <s>thought</s> debugging the obvious answer presents itself: <code>a</code> and <code>b</code> are <em>unsigned</em>. If <code>a - b</code> results in a negative number we have an integer underflow…<br>
 Ok, let’s recast back to an <code>int</code> after interpreting the bits as a <code>uint</code>.</p>
-<h4 id="attempt-3%3A" tabindex="-1">Attempt 3: <a class="direct-link" href="#attempt-3%3A">#</a></h4>
+<h4 id="attempt-3%3A" tabindex="-1">Attempt 3: <a class="external-link" href="#attempt-3%3A" target="_blank" rel="noopener noreferrer">#</a></h4>
 <pre class="language-csharp"><code class="language-csharp"><span class="token return-type class-name">Comparison<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">></span></span> <span class="token function">comparison</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> startFrom<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
 	<span class="token keyword">return</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=></span>
@@ -153,7 +153,7 @@ Ok, let’s recast back to an <code>int</code> after interpreting the bits as a 
 <span class="token punctuation">}</span></code></pre>
 <p>Nope. A large positive <code>uint</code> (which is what happens to our negative numbers) will revert back to negative because of that pesky sign bit.</p>
 <p>How about if we recast to a <code>long</code>? That should work.. 🤔</p>
-<h4 id="attempt-4%3A" tabindex="-1">Attempt 4: <a class="direct-link" href="#attempt-4%3A">#</a></h4>
+<h4 id="attempt-4%3A" tabindex="-1">Attempt 4: <a class="external-link" href="#attempt-4%3A" target="_blank" rel="noopener noreferrer">#</a></h4>
 <pre class="language-csharp"><code class="language-csharp"><span class="token return-type class-name">Comparison<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">></span></span> <span class="token function">comparison</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> startFrom<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
 	<span class="token keyword">return</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">=></span>
@@ -165,15 +165,15 @@ Ok, let’s recast back to an <code>int</code> after interpreting the bits as a 
 <span class="token punctuation">}</span></code></pre>
 <p>Ah, but the sort function needs to return an <code>int</code>. Now that the result of the subtraction is a <code>long</code> , if we cast the answer back to an <code>int</code> we loose the sign bit.<br>
 In short: I couldn’t get this path to work without adding a conditional which defeats the whole point of the exercise.</p>
-<h2 id="transposing" tabindex="-1">Transposing <a class="direct-link" href="#transposing">#</a></h2>
+<h2 id="transposing" tabindex="-1">Transposing <a class="external-link" href="#transposing" target="_blank" rel="noopener noreferrer">#</a></h2>
 <p>Here’s a different idea:<br>
 If we flip the sign bit of the original numbers, we can transpose a negative number into the positive realm and vice versa for positive numbers. Note: This is <em>transposition</em> not <em>negation</em> i.e. the number moves 2147483648 positions up or down the scale, without preserving its <em>magnitude</em> (1 becomes -2147483647).</p>
-<h3 id="javascript%E2%80%99s-numbers" tabindex="-1">Javascript’s <code>Number</code>s <a class="direct-link" href="#javascript%E2%80%99s-numbers">#</a></h3>
+<h3 id="javascript%E2%80%99s-numbers" tabindex="-1">Javascript’s <code>Number</code>s <a class="external-link" href="#javascript%E2%80%99s-numbers" target="_blank" rel="noopener noreferrer">#</a></h3>
 <p>In Javascript <em>all</em> numbers are represented as 64 bit floating point numbers. However, when doing binary bitwise operations the number is first coerced to a 32 bit integer.<br>
 The coercion will preserve the valence (“sign”) but truncate the the value to 32 bits.<br>
 After the operation, the resulting bits are converted back into 64 bit floating point numbers again preserving the valence.<br>
 All mathematical operations operate on the resulting 64 bit number.</p>
-<h3 id="the-solution" tabindex="-1">The solution <a class="direct-link" href="#the-solution">#</a></h3>
+<h3 id="the-solution" tabindex="-1">The solution <a class="external-link" href="#the-solution" target="_blank" rel="noopener noreferrer">#</a></h3>
 <p>Let us exploit this to solve our problem. To recap: We want to sort numbers in ascending order, but considering all negative numbers as higher valued than positive numbers.</p>
 <p>To do this I came up with the above method. Let us step through the code:</p>
 <ul>
@@ -185,7 +185,7 @@ All mathematical operations operate on the resulting 64 bit number.</p>
 Having flipped the sign bit, this will transpose a negative number from the negative realm to the positive realm and vice versa for positive numbers.</li>
 <li>Seeing as the previously negative numbers now have a higher value than the previous positive numbers, we can go ahead and use the regular <code>a - b</code></li>
 </ul>
-<h3 id="in-c%23" tabindex="-1">In C# <a class="direct-link" href="#in-c%23">#</a></h3>
+<h3 id="in-c%23" tabindex="-1">In C# <a class="external-link" href="#in-c%23" target="_blank" rel="noopener noreferrer">#</a></h3>
 <p>Here is a slightly messier C# version:</p>
 <pre class="language-csharp"><code class="language-csharp"><span class="token return-type class-name">Comparison<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">></span></span> <span class="token function">comparison</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> startFrom<span class="token punctuation">)</span>
 <span class="token punctuation">{</span>
