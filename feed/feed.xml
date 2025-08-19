@@ -5,12 +5,163 @@
 	
 	<link href="https://yossizahn.github.io/feed/feed.xml" rel="self"/>
 	<link href="https://yossizahn.github.io/"/>
-	<updated>2023-07-16T00:00:00Z</updated>
+	<updated>2025-08-19T00:00:00Z</updated>
 	<id>https://yossizahn.github.io/</id>
 	<author>
 		<name>yossizahn</name>
 		<email>dont@email.me</email>
 	</author>
+	
+	<entry>
+		<title>חשבון הגביה ונפל אחרת (תרומות ה&#39; ז&#39;)</title>
+		<link href="https://yossizahn.github.io/posts/mishna-logarithm/"/>
+		<updated>2025-08-19T00:00:00Z</updated>
+		<id>https://yossizahn.github.io/posts/mishna-logarithm/</id>
+		<content type="html">&lt;p&gt;איתא במתני’ (תרומות פ&amp;quot;ז מ”ב):&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;סאה תרומה שנפלה למאה, הגביהה ונפלה אחרת הגביהה ונפלה אחרת הרי זו מותרת עד שתרבה תרומה על החולין&lt;br /&gt;
+ובספר עטרת שאול בסופו:&lt;br /&gt;
+נשאלתי בווילנא הבירה מאת הגביר החריף ובקי פטיש החזק המפרוסם הרב מהו’ שמואל שטראשון בענין המשנה דמסכת תרומות הגביהה ונפלה אחרת וכו’ הרי”ז מותרת עד שתרבה תרומה על החולין, ושאל לי החשבון האמיתי מתי יהיה הדבר הזה לדעת רבנן דאין מדמעת אלא לפי חשבון.&lt;br /&gt;
+והשבתי לו בזה הלשון….&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;מכיון שקשה לעמוד על כוונת מחבר הספר, רציתי לבאר את הדברים היטב עם תרגום המינוחים המתמטיים למינוחים בני ימינו.&lt;/p&gt;
+&lt;p&gt;ככל הדברים הוא שהמחבר מביא שתי דרכים שבסופן מגיעים לאותו נוסחה. נבאר את שתי הדרכים הדק היטב בעז”ה.&lt;/p&gt;
+&lt;h2 id=&quot;%D7%97%D7%99%D7%A9%D7%95%D7%91-%D7%A9%D7%99%D7%A2%D7%95%D7%A8-%D7%94%D7%AA%D7%A8%D7%95%D7%9E%D7%94-%D7%A9%D7%A0%D7%A4%D7%9C%D7%94&quot; tabindex=&quot;-1&quot;&gt;חישוב שיעור התרומה שנפלה &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/mishna-logarithm/#%D7%97%D7%99%D7%A9%D7%95%D7%91-%D7%A9%D7%99%D7%A2%D7%95%D7%A8-%D7%94%D7%AA%D7%A8%D7%95%D7%9E%D7%94-%D7%A9%D7%A0%D7%A4%D7%9C%D7%94&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;כשנחשוב לעצמנו כמה תרומה נוספה לכרי נגיע למסקנה זו:&lt;br /&gt;
+בכל איטרציה של נפילה/הגבהה אתה מוסיף לכרי סאה אחת של תרומה, ואז מגביה מהכרי שיעור $\frac{1}{101}$ מתוך הסאה הנוספת וכל הסאים שבאו לפניה.&lt;br /&gt;
+יוצא אם כן, שבנפילה האחרונה, שנקרא לה נפילה מספר $n$, נפלו סה”כ לתוך הכרי:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\frac{100}{101}$ (מהנפילה האחרונה)&lt;/li&gt;
+&lt;li&gt;$\frac{100}{101}\times\frac{100}{101}$ (מהנפילה שלפני האחרונה)&lt;/li&gt;
+&lt;li&gt;$\frac{100}{101}\times\frac{100}{101}\times\frac{100}{101}$&lt;/li&gt;
+&lt;li&gt;…. (וכן הלאה עבור כל נפילה עד הראשונה ששיעורו:)&lt;/li&gt;
+&lt;li&gt;$\frac{100}{101}\times\cdots\times\frac{100}{101}$ (כמספר הנפילות)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;במינוח המתמטי המודרני הסדרה הזאת של מספרים נקראת “סדרה הנדסאית” והסה”כ של חיבור כל המספרים מהסדרה נקרא “טור הנדסאי”&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;כל סדרה של מספרים שהמעבר ממספר למספר כרוך בפעולת כפל עם ערך קבוע (במקרה שלנו זה כפל ב-$\frac{100}{101}$) נקרא “סדרה הנדסאית”. (עיין וויקיפדיה הטעם לשם זה).&lt;br /&gt;
+באנגלית זה נקרא Geometric Sequence ובלשון הספר עטרת שאול זה נקרא “חרוזה מדידית” (התרגום של גיאומטריה הוא “מדידת קרקע” - מובן אם כן למה הוא קורא לזה “חרוזה מדידית” כמו המונח האנגלי המקובל שמן הסתם מתאים למונח בשפות אחרות)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;בתחביר יותר מקובל זה נכתב כך:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+\left(\dfrac{100}{101}\right)+\left(\dfrac{100}{101}\right)^2+\cdots+\left(\dfrac{100}{101}\right)^{n}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ובקיצור (למי שמכיר את הסימון):&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;$$&lt;br /&gt;
+\sum_{k=1}^{n}\left(\frac{100}{101}\right)^{k}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;לשם הנוחות אני אתחיל להשתמש באות $r$ מעתה במקום השבר $\frac{100}{101}$&lt;/p&gt;
+&lt;p&gt;הנוסחה הסופית שלנו (לבינתיים) היא:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+r+r^2+\cdots+r^n&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;אז השאלה היא איך מקבלים את הסה”כ של טור הנדסאית?&lt;/p&gt;
+&lt;p&gt;למרבה המזל 😅 יש דרך קלה ונקייה לחשב את הסה”כ של הטור בלי להסתבך בשברים מסובכים, צריך רק קצת אלגברה…&lt;/p&gt;
+&lt;p&gt;השיטה היא כזאת:&lt;br /&gt;
+ניקח את כל הסדרה אותה כ: $S_n$:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+S_n=r+r^2+\cdots+r^n&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;עכשיו ניצור עוד סידרה שערכה $S_n\times{r}$ (כל ערך בסדרה המקורית נכפל ב-$r$) בסדרה החדשה:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+rS_n=r^2+r^3+\cdot+r^{n+1}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;עכשיו נחסר את הסידרה השניה מהראשונה, ונקבל משוואה זו:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+S_n-rS_n=\left(r+r^2+\cdots+r^n\right)-\left(r^2+r^3+\cdot+r^{n+1}\right)&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;עכשיו שימו לב: עבור כל ערך של הסדרה הראשונה יש מולו ערך בסדרה השניה ש”מחסל” אותו ($r^2-r^2=0$) חוץ מהערך הראשון של הסדרה הראשונה והערך האחרון של הסדרה השניה. נשארנו עם משוואה כזאת:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+S_n-rS_n=r-r^{n+1}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;עכשיו נפשט את הנוסחה קצת על ידי הוצאת הגורם המשותף בכל אחד משני הצדדים, נקבל:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+S_n(1-r)=r-r(1-r^n)&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;עכשיו נבודד את ה-$S_n$ לצד אחד על ידי חילוק שני הצדדים ב- $1-r$, קיבלנו:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+S_n=\frac{r(1-r^n)}{1-r}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;עכשיו נכניס חזרה את הערך של $r$ במקום האות, קיבלנו:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+S_n=\dfrac{\dfrac{100}{101}\cdot\left(1-\left(\dfrac{100}{101}\right)^n\right)}{1-\dfrac{100}{101}}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;את זה אפשר לפשט יותר על ידי כמה פעולות אלגבריות&lt;br /&gt;
+א. נחליף את $1-\frac{100}{101}$ בתוצאה: $\frac{1}{100}$&lt;br /&gt;
+ב. אפשר להמיר פעולת חלוקה בפעולת כפל של ההופכי, קיבלנו:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+S_n=\dfrac{100}{101}\cdot\left(1-\left(\dfrac{100}{101}\right)^n\right)\cdot{101}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;ג. אפשר שוב לפשט יותר:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+S_n=\dfrac{100}{\cancel{101}}\cdot\left(1-\left(\dfrac{100}{101}\right)^n\right)\cdot{\cancel{101}}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;קיבלנו:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+100\cdot\left(1-\left(\dfrac{100}{101}\right)^n\right)&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;h2 id=&quot;%D7%97%D7%99%D7%A9%D7%95%D7%91-%D7%90%D7%97%D7%A8%D7%99-%D7%9B%D7%9E%D7%94-%D7%A4%D7%A2%D7%9E%D7%99%D7%9D-%D7%A0%D7%92%D7%99%D7%A2-%D7%9C%D7%A8%D7%95%D7%91-%D7%94%D7%9B%D7%A8%D7%99&quot; tabindex=&quot;-1&quot;&gt;חישוב אחרי כמה פעמים נגיע לרוב הכרי &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/mishna-logarithm/#%D7%97%D7%99%D7%A9%D7%95%D7%91-%D7%90%D7%97%D7%A8%D7%99-%D7%9B%D7%9E%D7%94-%D7%A4%D7%A2%D7%9E%D7%99%D7%9D-%D7%A0%D7%92%D7%99%D7%A2-%D7%9C%D7%A8%D7%95%D7%91-%D7%94%D7%9B%D7%A8%D7%99&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;עכשיו ננסה למצוא פתרון באיזה $n$ יהיה התוצאה מעל ל $50$ (= יש יותר מ-50 סאה תרומה)&lt;br /&gt;
+אז ניצור משוואה זו:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+100\cdot\left(1-\left(\dfrac{100}{101}\right)^n\right)\gt50&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;ננסה לבודד את ה $n$ בצד אחד:&lt;br /&gt;
+א. נחלק שני הצדדים ב-100:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+\dfrac{100\cdot\left(1-\left(\dfrac{100}{101}\right)^n\right)}{100}\gt\dfrac{50}{100}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;ב. הפשטה:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+\dfrac{\cancel{100}\cdot\left(1-\left(\dfrac{100}{101}\right)^n\right)}{\cancel{100}}\gt\dfrac{\cancel{50}}{\cancel{100}} = \dfrac{1}{2}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;קיבלנו:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+1-\left(\dfrac{100}{101}\right)^n\gt\dfrac{1}{2}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;ג. נוריד $1$ משני הצדדים:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+-\left(\dfrac{100}{101}\right)^n\gt-\dfrac{1}{2}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;ד. נחליף את השלילי לחיובי על ידי כפל ב $-1$ ושינוי כיוון המשוואה:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+\left(\dfrac{100}{101}\right)^n\lt\dfrac{1}{2}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;ה. עכשיו כדי לבודד את ה $n$ נשתמש בפונקצית $log$ (הסבר תמציתי: בהינתן: $a^b=n$ אז $log_b(n)=a$, כלומר: פעולת $log$ עונה על השאלה “$b$ בחזקת מה שווה ל $n$?”)&lt;br /&gt;
+קיבלנו:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+n&amp;lt;log_{\frac{100}{101}}\left(\frac{1}{2}\right)&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;ו. לשלב הזה צריך להשתמש במחשבון מדעי… אבל במחשבון אין כפתור עבור $log_{\frac{100}{101}}$. אז נשתמש בנוסחה להמרת הבסיס של הלוגריתם:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+n=\dfrac{ln(0.5)}{ln\left(\dfrac{100}{101}\right)}\approx69.66&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;זהו! הגענו לתשובה שאחרי $\approx69.66$ יש רוב של תרומה.&lt;/p&gt;
+&lt;h2 id=&quot;%D7%94%D7%A9%D7%99%D7%98%D7%94-%D7%94%D7%A9%D7%A0%D7%99%D7%94&quot; tabindex=&quot;-1&quot;&gt;השיטה השניה &lt;a class=&quot;direct-link&quot; href=&quot;https://yossizahn.github.io/posts/mishna-logarithm/#%D7%94%D7%A9%D7%99%D7%98%D7%94-%D7%94%D7%A9%D7%A0%D7%99%D7%94&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;בעטרת שאול הנ”ל הוא עומד על זה שיש שיטה הרבה יותר פשוטה להגיע לאותו חישוב.&lt;br /&gt;
+הרעיון הוא פשוט מאוד: במקום לחשוב על התרומה שנפלה נחשוב על החולין.&lt;br /&gt;
+אחרי כל איטרציה של נפילה/הגבהה החולין יורד בסך: $\frac{1}{101}$&lt;br /&gt;
+אם כן אחרי $n$ נפילות, הסך של החולין שנשאר הוא:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+100\times\left(\dfrac{100}{101}\right)^n&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;מיד אפשר לנו להגיע למשוואה כזו שמציין את נקודת הזמן שהחולין פחות מחצי הכרי:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+100\times\left(\dfrac{100}{101}\right)^n&amp;lt;50&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;נחלק כל צד במאה:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+\dfrac{\cancel{100}\times\left(\dfrac{100}{101}\right)^n}{\cancel{100}}\lt\dfrac{\cancel{50}}{\cancel{100}} = \dfrac{1}{2}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;והנה הגענו שוב לאותה משוואה שהיה לנו מקודם:&lt;/p&gt;
+&lt;p&gt;$$&lt;br /&gt;
+\left(\dfrac{100}{101}\right)^n\lt\dfrac{1}{2}&lt;br /&gt;
+$$&lt;/p&gt;
+&lt;p&gt;באמת קצת פלא בעיני שהעטרת שאול טורח לעשות את החישוב של טור הנדסאי שיותר מסובך במקום החישוב הפשוט יותר&lt;/p&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>“Split sort” with some bit twiddling</title>
