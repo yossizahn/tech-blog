@@ -1,6 +1,6 @@
 ---
 title: חשבון הגביה ונפל אחרת (תרומות ה' ז')
-description: Placeholder!
+description: חשבון הגביה ונפל אחרת (תרומות ה' ז')
 date: 2025-08-19
 tags:
   - torah
