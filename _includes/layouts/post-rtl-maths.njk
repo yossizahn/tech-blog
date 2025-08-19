@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-post
+---
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"],
+      ],
+      displayMath: [
+        ["$$", "$$"],
+        ["\\[", "\\]"],
+      ],
+    },
+  };
+</script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+></script>
+
+<article class="prose rtl" dir="rtl">
+  <h1>{{ title }}</h1>
+
+  {{ content | safe }}
+</article>
+<ul class="my-12 text-gray-600">
+  {%- set nextPost = collections.posts | getNextCollectionItem(page) %} {%- if
+  nextPost %}
+  <li>
+    Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a>
+  </li>
+  {% endif %} {%- set previousPost = collections.posts |
+  getPreviousCollectionItem(page) %} {%- if previousPost %}
+  <li>
+    Previous:
+    <a href="{{ previousPost.url | url }}" class="underline">{{
+      previousPost.data.title
+    }}</a>
+  </li>
+  {% endif %}
+</ul>

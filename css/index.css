@@ -1,3 +1,5 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@400;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200..800&display=swap');
 :root {
   --red: #C5004A;
   --darkred: #7F0036;
@@ -21,6 +23,22 @@ body {
 p:last-child {
   margin-bottom: 0;
 }
+.rtl {
+  text-align: right;
+  direction: rtl;
+}
+.rtl blockquote {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--tw-prose-quotes);
+  border-right-width: 0.25rem;
+  border-left: none;
+  border-right-color: var(--tw-prose-quote-borders);
+  quotes: none;
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+  padding-right: 1em;
+}
 p,
 .tmpl-post li,
 img {
@@ -34,7 +52,7 @@ a[href]:visited {
   /* color: var(--navy); */
 }
 main {
-  font-family: 'Merriweather', serif;
+  font-family: 'Merriweather','Assistant', serif;
   padding: 1rem;
 }
 main :first-child {
