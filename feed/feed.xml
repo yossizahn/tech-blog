@@ -39,7 +39,7 @@
 &lt;li&gt;…. (וכן הלאה עבור כל נפילה עד הראשונה ששיעורו:)&lt;/li&gt;
 &lt;li&gt;$\frac{100}{101}\times\cdots\times\frac{100}{101}$ (כמספר הנפילות)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;במינוח המתמטי המודרני הסדרה הזאת של מספרים נקראת &amp;quot;&lt;a href=&quot;https://www.hamichlol.org.il/%D7%A1%D7%93%D7%A8%D7%94_%D7%94%D7%A0%D7%93%D7%A1%D7%99%D7%AA&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class=&quot;external-link&quot;&gt;סדרה הנדסית&lt;/a&gt;&amp;quot; והסה&amp;quot;כ של חיבור כל המספרים מהסדרה נקרא &amp;quot;&lt;a href=&quot;https://www.hamichlol.org.il/%D7%98%D7%95%D7%A8_(%D7%9E%D7%AA%D7%9E%D7%98%D7%99%D7%A7%D7%94)#%D7%98%D7%95%D7%A8_%D7%94%D7%A0%D7%93%D7%A1%D7%99&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class=&quot;external-link&quot;&gt;טור הנדסאי&lt;/a&gt;&amp;quot;&lt;/p&gt;
+&lt;p&gt;במינוח המתמטי המודרני הסדרה הזאת של מספרים נקראת &amp;quot;&lt;a href=&quot;https://www.hamichlol.org.il/%D7%A1%D7%93%D7%A8%D7%94_%D7%94%D7%A0%D7%93%D7%A1%D7%99%D7%AA&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class=&quot;external-link&quot;&gt;סדרה הנדסית&lt;/a&gt;&amp;quot; והסה&amp;quot;כ של חיבור כל המספרים מהסדרה נקרא &amp;quot;&lt;a href=&quot;https://www.hamichlol.org.il/%D7%98%D7%95%D7%A8_(%D7%9E%D7%AA%D7%9E%D7%98%D7%99%D7%A7%D7%94)#%D7%98%D7%95%D7%A8_%D7%94%D7%A0%D7%93%D7%A1%D7%99&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class=&quot;external-link&quot;&gt;טור הנדסי&lt;/a&gt;&amp;quot;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;ℹ️ כל סדרה של מספרים שהמעבר ממספר למספר כרוך בפעולת כפל עם ערך קבוע (במקרה שלנו זה כפל ב-$\frac{100}{101}$) נקרא &amp;quot;סדרה הנדסית&amp;quot;.&lt;br /&gt;
 באנגלית זה נקרא Geometric Sequence ובלשון הספר עטרת שאול זה נקרא &amp;quot;חרוזה מדידית&amp;quot; (התרגום של גיאומטריה הוא &amp;quot;מדידת קרקע&amp;quot; - מובן אם כן למה הוא קורא לזה &amp;quot;חרוזה מדידית&amp;quot; כמו המונח האנגלי המקובל שמן הסתם מתאים למונח בשפות אחרות)&lt;/p&gt;
@@ -161,7 +161,7 @@ $$&lt;/p&gt;
 &lt;p&gt;$$&lt;br /&gt;
 \left(\dfrac{100}{101}\right)^n\lt\dfrac{1}{2}&lt;br /&gt;
 $$&lt;/p&gt;
-&lt;p&gt;באמת קצת פלא בעיני שהעטרת שאול טורח לעשות את החישוב של טור הנדסאי שיותר מסובך במקום החישוב הפשוט יותר&lt;/p&gt;
+&lt;p&gt;באמת קצת פלא בעיני שהעטרת שאול טורח לעשות את החישוב של טור הנדסי שיותר מסובך במקום החישוב הפשוט יותר&lt;/p&gt;
 </content>
 	</entry>
 	
