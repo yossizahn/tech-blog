@@ -31,7 +31,7 @@
 &lt;h2 id=&quot;%D7%97%D7%99%D7%A9%D7%95%D7%91-%D7%A9%D7%99%D7%A2%D7%95%D7%A8-%D7%94%D7%AA%D7%A8%D7%95%D7%9E%D7%94-%D7%A9%D7%A0%D7%A4%D7%9C%D7%94&quot; tabindex=&quot;-1&quot;&gt;חישוב שיעור התרומה שנפלה &lt;a class=&quot;external-link&quot; href=&quot;https://yossizahn.github.io/posts/mishna-logarithm/#%D7%97%D7%99%D7%A9%D7%95%D7%91-%D7%A9%D7%99%D7%A2%D7%95%D7%A8-%D7%94%D7%AA%D7%A8%D7%95%D7%9E%D7%94-%D7%A9%D7%A0%D7%A4%D7%9C%D7%94&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;כשנחשוב לעצמנו כמה תרומה נוספה לכרי נגיע למסקנה זו:&lt;br /&gt;
 בכל איטרציה של נפילה/הגבהה אתה מוסיף לכרי סאה אחת של תרומה, ואז מגביה מהכרי שיעור $\frac{1}{101}$ מתוך הסאה הנוספת וכל הסאים שבאו לפניה.&lt;br /&gt;
-יוצא אם כן, שבנפילה האחרונה, שנקרא לה נפילה מספר $n$, נפלו סה&amp;quot;כ לתוך הכרי:&lt;/p&gt;
+יוצא אם כן, שבנפילה האחרונה, שנקרא לה נפילה מספר $n$, נשארו סה&amp;quot;כ לתוך הכרי:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;$\frac{100}{101}$ (מהנפילה האחרונה)&lt;/li&gt;
 &lt;li&gt;$\frac{100}{101}\times\frac{100}{101}$ (מהנפילה שלפני האחרונה)&lt;/li&gt;
