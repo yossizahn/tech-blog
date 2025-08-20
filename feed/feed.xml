@@ -91,7 +91,7 @@ $$&lt;/p&gt;
 S_n=\dfrac{\dfrac{100}{101}\cdot\left(1-\left(\dfrac{100}{101}\right)^n\right)}{1-\dfrac{100}{101}}&lt;br /&gt;
 $$&lt;/p&gt;
 &lt;p&gt;את זה אפשר לפשט יותר על ידי כמה פעולות אלגבריות&lt;br /&gt;
-א. נחליף את $1-\frac{100}{101}$ בתוצאה: $\frac{1}{100}$&lt;br /&gt;
+א. נחליף את $1-\frac{100}{101}$ בתוצאה: $\frac{1}{101}$&lt;br /&gt;
 ב. אפשר להמיר פעולת חלוקה בפעולת כפל של ההופכי, קיבלנו:&lt;/p&gt;
 &lt;p&gt;$$&lt;br /&gt;
 S_n=\dfrac{100}{101}\cdot\left(1-\left(\dfrac{100}{101}\right)^n\right)\cdot{101}&lt;br /&gt;
