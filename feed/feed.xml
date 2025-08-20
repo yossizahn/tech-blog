@@ -66,7 +66,7 @@ $$&lt;/p&gt;
 &lt;p&gt;$$&lt;br /&gt;
 S_n=r+r^2+\cdots+r^n&lt;br /&gt;
 $$&lt;/p&gt;
-&lt;p&gt;עכשיו ניצור עוד סידרה שערכה $S_n\times{r}$ (כל ערך בסדרה המקורית נכפל ב-$r$) בסדרה החדשה:&lt;/p&gt;
+&lt;p&gt;עכשיו ניצור עוד סידרה שערכה $S_n\times{r}$ (כל ערך בסדרה המקורית נכפל ב-$r$ בסדרה החדשה):&lt;/p&gt;
 &lt;p&gt;$$&lt;br /&gt;
 rS_n=r^2+r^3+\cdot+r^{n+1}&lt;br /&gt;
 $$&lt;/p&gt;
