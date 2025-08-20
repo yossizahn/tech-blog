@@ -8,6 +8,9 @@ templateClass: tmpl-post
 
   {{ content | safe }}
 </article>
+<script>
+  MathJax.typesetPromise();
+</script>
 <ul class="my-12 text-gray-600">
   {%- set nextPost = collections.posts | getNextCollectionItem(page) %} {%- if
   nextPost %}
