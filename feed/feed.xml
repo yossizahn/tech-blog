@@ -141,7 +141,7 @@ $$&lt;/p&gt;
 n\lt\dfrac{ln(0.5)}{ln\left(\dfrac{100}{101}\right)}\approx69.66&lt;br /&gt;
 $$&lt;/p&gt;
 &lt;p&gt;זהו! הגענו לתשובה שאחרי $\approx69.66$ יש רוב של תרומה.&lt;/p&gt;
-&lt;h2 id=&quot;%D7%94%D7%A9%D7%99%D7%98%D7%94-%D7%94%D7%A9%D7%A0%D7%99%D7%94%3A-%D7%97%D7%99%D7%A9%D7%95%D7%91-%D7%9B%D7%9E%D7%94-%D7%97%D7%95%D7%9C%D7%99%D7%9F-%D7%A0%D7%A9%D7%90%D7%A8&quot; tabindex=&quot;-1&quot;&gt;השיטה השניה: חישוב כמה חולין נשאר &lt;a class=&quot;external-link&quot; href=&quot;https://yossizahn.github.io/posts/mishna-logarithm/#%D7%94%D7%A9%D7%99%D7%98%D7%94-%D7%94%D7%A9%D7%A0%D7%99%D7%94%3A-%D7%97%D7%99%D7%A9%D7%95%D7%91-%D7%9B%D7%9E%D7%94-%D7%97%D7%95%D7%9C%D7%99%D7%9F-%D7%A0%D7%A9%D7%90%D7%A8&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;%D7%94%D7%A9%D7%99%D7%98%D7%94-%D7%94%D7%A9%D7%A0%D7%99%D7%94%3A-%D7%97%D7%99%D7%A9%D7%95%D7%91-%D7%9B%D7%9E%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%9C%D7%99%D7%9F-%D7%A9%D7%A0%D7%A9%D7%90%D7%A8&quot; tabindex=&quot;-1&quot;&gt;השיטה השניה: חישוב כמות החולין שנשאר &lt;a class=&quot;external-link&quot; href=&quot;https://yossizahn.github.io/posts/mishna-logarithm/#%D7%94%D7%A9%D7%99%D7%98%D7%94-%D7%94%D7%A9%D7%A0%D7%99%D7%94%3A-%D7%97%D7%99%D7%A9%D7%95%D7%91-%D7%9B%D7%9E%D7%95%D7%AA-%D7%94%D7%97%D7%95%D7%9C%D7%99%D7%9F-%D7%A9%D7%A0%D7%A9%D7%90%D7%A8&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;בעטרת שאול הנ&amp;quot;ל הוא עומד על זה שיש שיטה הרבה יותר פשוטה להגיע לאותו חישוב.&lt;br /&gt;
 הרעיון הוא פשוט מאוד: במקום לחשוב על התרומה שנפלה נחשוב על החולין.&lt;br /&gt;
 אחרי כל איטרציה של נפילה/הגבהה החולין יורד בסך: $\frac{1}{101}$&lt;br /&gt;
